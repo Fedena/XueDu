@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110319032616) do
+ActiveRecord::Schema.define(:version => 20110322095342) do
 
   create_table "additional_exam_groups", :force => true do |t|
     t.string  "name"
@@ -262,6 +262,17 @@ ActiveRecord::Schema.define(:version => 20110319032616) do
     t.time    "start_time"
     t.time    "end_time"
     t.boolean "is_break"
+  end
+
+  create_table "classrooms", :force => true do |t|
+    t.integer  "school_id"
+    t.string   "name"
+    t.string   "code"
+    t.integer  "seats"
+    t.boolean  "status"
+    t.boolean  "is_deleted", :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "configurations", :force => true do |t|
@@ -671,6 +682,14 @@ ActiveRecord::Schema.define(:version => 20110319032616) do
     t.datetime "updated_at"
   end
 
+  create_table "schools", :force => true do |t|
+    t.string   "school_name"
+    t.string   "school_code"
+    t.boolean  "is_deleted",  :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "sms_settings", :force => true do |t|
     t.string  "settings_key"
     t.boolean "is_enabled",   :default => false
@@ -753,7 +772,9 @@ ActiveRecord::Schema.define(:version => 20110319032616) do
     t.string   "name"
     t.string   "code"
     t.integer  "batch_id"
+    t.integer  "classroom_id"
     t.boolean  "no_exams",           :default => false
+    t.boolean  "no_classroom",       :default => false
     t.integer  "max_weekly_classes"
     t.integer  "elective_group_id"
     t.boolean  "is_deleted",         :default => false

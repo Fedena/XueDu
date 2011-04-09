@@ -1,9 +1,14 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :campuses
+  map.resources :classrooms
 
+  #校区
+  map.feed 'schools/manage_compus', :controller => 'schools' ,:action=>'manage_compus'
+  map.feed 'schools/manage_classrooms', :controller => 'schools' ,:action=>'manage_classrooms'
+  map.resources :schools, :has_many => :classrooms
 
   map.resources :grading_levels
   map.resources :class_timings
+  map.feed 'subjects/view', :controller => 'subjects' ,:action=>'view'
   map.resources :subjects
   map.resources :attendances
   map.resources :employee_attendances

@@ -1,8 +1,8 @@
 
 <div id="content-header">
   <img src="/images/show_settings.png" />
-  <h1><%= t 'Cfg.Configuration' %></h1>
-  <h3><%= t 'Cfg.Configuration_home' %></h3>
+  <h1>Configuration</h1>
+  <h3>Configuration home</h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -18,35 +18,35 @@
 
     <% if permitted_to? :create, :courses %>
       <div class="link-box">
-        <div class="link-heading"><%= link_to t("Cfg.Manage_Courses_Batches"), courses_path %></div>
-        <div class="link-descr"><%= t 'Cfg.Add_Course_Batche' %>.</div>
+        <div class="link-heading"><%= link_to "Manage Courses / Batches", courses_path %></div>
+        <div class="link-descr">Add a new Course or Batch for this academic year.</div>
       </div>
     <% end %>
 
     <% if permitted_to? :settings, :configuration %>
       <div class="link-box">
-        <div class="link-heading"><%= link_to t("Cfg.Manage_student_categories"), :controller => "student", :action => "categories" %></div>
-        <div class="link-descr"><%= t 'Cfg.Add_student_category' %>.</div>
+        <div class="link-heading"><%= link_to "Manage student categories", :controller => "student", :action => "categories" %></div>
+        <div class="link-descr">Add student category.</div>
       </div>
     <% end %>
     <% if permitted_to? :index, :subjects %>
       <div class="link-box">
-        <div class="link-heading"><%= link_to t("Cfg.Manage_subjects"), subjects_path %></div>
-        <div class="link-descr"><%= t 'Cfg.Manage_subjects_courses' %>.</div>
+        <div class="link-heading"><%= link_to "Manage subjects", subjects_path %></div>
+        <div class="link-descr">Manage subjects corresponding to different courses.</div>
       </div>
     <% end %>
 
     <% if permitted_to? :settings, :configuration %>
       <div class="link-box">
-        <div class="link-heading"><%= link_to t("Cfg.General_settings"), :action => "settings" %></div>
-        <div class="link-descr"><%= t 'Cfg.Set_some_general_configurations' %>. </div>
+        <div class="link-heading"><%= link_to "General settings", :action => "settings" %></div>
+        <div class="link-descr">Set some general configurations related to institution,attendance, etc.</div>
       </div>
     <% end %>
 
     <% if permitted_to? :settings, :configuration %>
       <div class="link-box">
-        <div class="link-heading"><%= link_to t("Cfg.Add_admission_additional_details"), :controller=>"student", :action => "add_additional_details" %></div>
-        <div class="link-descr"><%=t 'Cfg.Set_additional_for_admission' %>.</div>
+        <div class="link-heading"><%= link_to "Add admission additional details", :controller=>"student", :action => "add_additional_details" %></div>
+        <div class="link-descr">Set some additional details for admission.</div>
       </div>
     <% end %>
 
@@ -54,23 +54,22 @@
       <% @config = Configuration.available_modules %>
       <% if @config.include?('SMS') %>
         <div class="link-box">
-          <div class="link-heading"><%= link_to t("Cfg.SMS_Module"), :controller=>"sms", :action => "index" %></div>
-          <div class="link-descr"><%= t 'Cfg.Enable_Disable_SMS_settings' %></div>
+          <div class="link-heading"><%= link_to "SMS Module", :controller=>"sms", :action => "index" %></div>
+          <div class="link-descr">Enable/Disable SMS settings</div>
         </div>
       <% end %>
     <% end %>
 
-    
-     <% if permitted_to? :index, :campuses %>
+    <!-- 校区 -->
+    <% if permitted_to? :index, :sms %>
       <% @config = Configuration.available_modules %>
-      <% if @config.include?('CAMPUSES') %>
+      <% if @config.include?('Compus') %>
         <div class="link-box">
-          <div class="link-heading"><%= link_to t("Cfg.Manage_Campus_Classroom"), :controller=>"campuses", :action => "index" %></div>
-          <div class="link-descr"><%= t 'Cfg.Create_Campus_Classroom' %></div>
+          <div class="link-heading"><%= link_to "Manage Campus/Classroom", schools_path %></div>
+          <div class="link-descr">Manage create Campus and  Classroom</div>
         </div>
       <% end %>
-     <% end %>
-
+    <% end %>
     </div>
 
 

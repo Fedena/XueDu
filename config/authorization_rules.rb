@@ -400,7 +400,7 @@ authorization do
     has_permission_on [:configuration], :to => [:index]
     has_permission_on [:courses], :to => [:index,:manage_course, :manage_batches,:find_course, :new, :create,:destroy,:edit,:update, :show, :update_batch]
     has_permission_on [:batches], :to => [:index, :new, :create,:destroy,:edit,:update, :show, :init_data]
-    has_permission_on [:subjects], :to => [:index, :new, :create,:destroy,:edit,:update, :show]
+    has_permission_on [:subjects], :to => [:index, :new, :create,:destroy,:edit,:update, :show, :update_classroom, :view]
     has_permission_on [:student], :to => [:electives, :assign_students, :unassign_students, :assign_all_students, :unassign_all_students, :profile, :guardians, :show_previous_details]
     has_permission_on [:batch_transfers],
       :to => [
@@ -421,7 +421,7 @@ authorization do
   role :subject_master do
     has_permission_on [:configuration], :to => [:index]
     has_permission_on [:student], :to => [:electives, :assign_students, :unassign_students, :assign_all_students, :unassign_all_students]
-    has_permission_on [:subjects],        :to => [:index,:new,:create,:destroy,:edit, :update,:show]
+    has_permission_on [:subjects],        :to => [:index,:new,:create,:destroy,:edit, :update,:show, :update_classroom, :view]
   end
 
   role :academic_year do
@@ -436,13 +436,15 @@ authorization do
         :update_courses,
         :upcoming_exams ]
   end
+  #短信管理
   role :sms_management do
     has_permission_on [:configuration], :to => [:index]
     has_permission_on [:sms], :to => [:index, :settings, :students, :batches, :employees, :departments,:all, :update_general_sms_settings, :list_students, :sms_all, :list_employees]
   end
-  role :campuses_management do
+  #校区管理
+  role :compus_management do
     has_permission_on [:configuration], :to => [:index]
-    has_permission_on [:campuses], :to => [:index, :show, :new, :edit, :create, :update, :destroy]
+    has_permission_on [:schools], :to => [:index, :new, :create, :show, :edit, :update, :destroy, :manage_compus, :manage_classrooms, :update_classroom]
   end
   role :event_management do
     
@@ -772,13 +774,16 @@ authorization do
         :list_subject
     ]
     has_permission_on [:sms],  :to => [:index, :settings, :update_general_sms_settings, :students, :list_students, :batches, :sms_all, :employees, :list_employees, :departments, :all]
-    has_permission_on [:campuses], :to => [:index, :show, :new, :edit, :create, :update, :destroy]
     has_permission_on [:sms_settings],  :to => [:index, :update_general_sms_settings]
+    #给admin赋校区权限
+    has_permission_on [:schools], :to => [:index, :new, :create, :show, :edit, :update, :destroy, :manage_compus, :manage_classrooms, :update_classroom]
+    #教室
+    has_permission_on [:classrooms], :to => [:index, :new, :create, :show, :edit, :update, :destroy]
     has_permission_on [:class_timings],  :to => [:index, :edit, :destroy, :show, :new, :create, :update]
     has_permission_on [:attendance_reports], :to => [:index, :subject, :mode, :show, :year, :report, :filter, :student_details]
     has_permission_on [:student_attendance], :to => [:index, :student, :month]
     has_permission_on [:configuration], :to => [:index,:settings,:permissions, :add_weekly_holidays, :delete]
-    has_permission_on [:subjects], :to => [:index, :new, :create,:destroy,:edit,:update, :show]
+    has_permission_on [:subjects], :to => [:index, :new, :create,:destroy,:edit,:update, :show, :update_classroom, :view]
     has_permission_on [:courses],
       :to => [
         :index,
