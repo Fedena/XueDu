@@ -1,9 +1,10 @@
+#职员部门
 class CreateEmployeeDepartments < ActiveRecord::Migration
   def self.up
     create_table :employee_departments do |t|
-      t.string  :code
-      t.string  :name
-      t.boolean :status
+      t.string  :code, :comment => "代码"
+      t.string  :name, :comment => "姓名"
+      t.boolean :status, :comment => "状态"
     end
    create_default
   end

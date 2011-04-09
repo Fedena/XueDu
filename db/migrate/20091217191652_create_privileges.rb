@@ -1,7 +1,8 @@
+#权限
 class CreatePrivileges < ActiveRecord::Migration
   def self.up
     create_table :privileges do |t|
-      t.string :name
+      t.string :name, :comment => "名称"
       t.timestamps
     end
 
@@ -25,7 +26,7 @@ class CreatePrivileges < ActiveRecord::Migration
     Privilege.create :name => "PayslipPowers"
     Privilege.create :name => "EmployeeSearch"
     Privilege.create :name => "SMSManagement"
-    Privilege.create :name => "CampusesManagement"
+    Privilege.create :name => "CompusManagement"
   end
 
   def self.down

@@ -37,4 +37,14 @@ module ApplicationHelper
     Configuration.find_by_config_key("CurrencyType").config_value
   end
   
+  #教室下拉框(用于subjects/new)
+  #author by wangqun
+  #since 2011-04-02
+  def select_classroom_option(list = Classroom.active, param_hash = {})
+    options = [["Select a Classroom", ""]]
+    list.each do |c|
+      options += [[c.full_name, c.id]]
+    end
+    options
+  end
 end

@@ -1,11 +1,12 @@
+#等级水平
 class CreateGradingLevels < ActiveRecord::Migration
   def self.up
     create_table :grading_levels do |t|
-      t.string     :name
-      t.references :batch
-      t.integer    :min_score
-      t.integer    :order
-      t.boolean    :is_deleted, :default => false
+      t.string     :name, :comment => "名称"
+      t.references :batch, :comment => "关联学期"
+      t.integer    :min_score, :comment => "最低分"
+      t.integer    :order, :comment => "排序"
+      t.boolean    :is_deleted, :default => false, :comment => "是否删除"
       t.timestamps
     end
       create_default

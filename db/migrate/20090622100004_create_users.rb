@@ -1,18 +1,19 @@
+#用户信息
 class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
-      t.string   :username
-      t.string   :first_name
-      t.string   :last_name
-      t.string   :email
+      t.string   :username, :comment => "用户名"
+      t.string   :first_name, :comment => "姓氏"
+      t.string   :last_name, :comment => "名字"
+      t.string   :email, :comment => "email"
 
-      t.boolean  :admin
-      t.boolean  :student
-      t.boolean  :employee
+      t.boolean  :admin, :comment => "是否是管理员"
+      t.boolean  :student, :comment => "是否为学生"
+      t.boolean  :employee, :comment => "是否为职员"
       
-      t.string   :hashed_password
-      t.string   :salt
-      t.string   :reset_password_code
+      t.string   :hashed_password, :comment => "密码hash"
+      t.string   :salt, :comment => "salt"
+      t.string   :reset_password_code, :comment => "重置密码"
       t.datetime :reset_password_code_until
       
       t.timestamps

@@ -1,60 +1,61 @@
+#职员信息
 class CreateEmployees < ActiveRecord::Migration
   def self.up
     create_table :employees do |t|
-      t.references :employee_category
-      t.string     :employee_number
-      t.date       :joining_date
-      t.string     :first_name
-      t.string     :middle_name
-      t.string     :last_name
-      t.boolean    :gender
-      t.string     :job_title
-      t.references :employee_position
-      t.references :employee_department
-      t.integer    :reporting_manager_id
-      t.references :employee_grade
-      t.string     :qualification
-      t.text       :experience_detail
-      t.integer    :experience_year
-      t.integer    :experience_month
-      t.boolean    :status
-      t.string     :status_description
+      t.references :employee_category, :comment => "关联职员类别"
+      t.string     :employee_number, :comment => "职员号"
+      t.date       :joining_date, :comment => "入职时间"
+      t.string     :first_name, :comment => "姓氏"
+      t.string     :middle_name, :comment => "中间名"
+      t.string     :last_name, :comment => "名"
+      t.boolean    :gender, :comment => "性别"
+      t.string     :job_title, :comment => "职位"
+      t.references :employee_position, :comment => "关联职员职务"
+      t.references :employee_department, :comment => "关联部门"
+      t.integer    :reporting_manager_id, :comment => "上级领导"
+      t.references :employee_grade, :comment => "关联职员等级"
+      t.string     :qualification, :comment => "资格"
+      t.text       :experience_detail, :comment => "工作经历"
+      t.integer    :experience_year, :comment => "工龄"
+      t.integer    :experience_month, :comment => "工作月数"
+      t.boolean    :status, :comment => "状态"
+      t.string     :status_description, :comment => "状态描述"
 
-      t.date       :date_of_birth
-      t.string     :marital_status
-      t.integer    :children_count
-      t.string     :father_name
-      t.string     :mother_name
-      t.string     :husband_name
-      t.string     :blood_group
-      t.references :nationality
+      t.date       :date_of_birth, :comment => "出生日期"
+      t.string     :marital_status, :comment => "婚姻状况"
+      t.integer    :children_count, :comment => "儿女数"
+      t.string     :father_name, :comment => "父亲姓名"
+      t.string     :mother_name, :comment => "母亲姓名"
+      t.string     :husband_name, :comment => "配偶姓名"
+      t.string     :blood_group, :comment => "血型"
+      t.references :nationality, :comment => "国籍"
 
       
-      t.string     :home_address_line1
-      t.string     :home_address_line2
-      t.string     :home_city
-      t.string     :home_state
-      t.integer    :home_country_id
-      t.string    :home_pin_code
+      t.string     :home_address_line1, :comment => "家庭电话1"
+      t.string     :home_address_line2, :comment => "家庭电话2"
+      t.string     :home_city, :comment => "家庭所在城市"
+      t.string     :home_state, :comment => "家庭所在州"
+      t.integer    :home_country_id, :comment => "家庭所在国家"
+      t.string     :home_pin_code, :comment => "pin码"
 
-      t.string     :office_address_line1
-      t.string     :office_address_line2
-      t.string     :office_city
-      t.string     :office_state
-      t.integer    :office_country_id
-      t.string    :office_pin_code
+      t.string     :office_address_line1, :comment => "办公电话1"
+      t.string     :office_address_line2, :comment => "办公电话2"
+      t.string     :office_city, :comment => "公司所在城市"
+      t.string     :office_state, :comment => "公司所在州"
+      t.integer    :office_country_id, :comment => "公司所在国家"
+      t.string    :office_pin_code, :comment => "公司pin码"
 
-      t.string     :office_phone1
-      t.string     :office_phone2
-      t.string     :mobile_phone
-      t.string     :home_phone
-      t.string     :email
-      t.string     :fax
+      t.string     :office_phone1, :comment => "办公电话1"
+      t.string     :office_phone2, :comment => "办公电话2"
+      t.string     :mobile_phone, :comment => "手机号"
+      t.string     :home_phone, :comment => "家庭号"
+      t.string     :email, :comment => "email"
+      t.string     :fax, :comment => "传真"
 
-      t.column   :photo_filename,       :string
-      t.column   :photo_content_type,   :string
+      t.column   :photo_filename,       :string, :comment => "照片名称"
+      t.column   :photo_content_type,   :string, :comment => "照片类型"
       t.column   :photo_data,           :binary,
-        :limit => 5.megabytes
+        :limit => 5.megabytes, :comment => "照片大小"
 
       t.timestamps
     end

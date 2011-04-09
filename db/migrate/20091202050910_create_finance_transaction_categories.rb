@@ -1,10 +1,11 @@
+#金融转换类别
 class CreateFinanceTransactionCategories < ActiveRecord::Migration
   def self.up
     create_table :finance_transaction_categories do |t|
-      t.string  :name
-      t.string  :description
-      t.boolean :is_income
-      t.boolean :deleted, :null => false, :default => false
+      t.string  :name, :comment => "姓名"
+      t.string  :description, :comment => "描述"
+      t.boolean :is_income, :comment => "是否是收入"
+      t.boolean :deleted, :null => false, :default => false, :comment => "是否删除"
     end
     create_defaults
   end

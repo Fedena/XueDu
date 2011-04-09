@@ -1,8 +1,9 @@
+#xml
 class CreateXmls < ActiveRecord::Migration
   def self.up
     create_table :xmls do |t|
-      t.string   :finance_name
-      t.string   :ledger_name
+      t.string   :finance_name, :comment => "财经名称"
+      t.string   :ledger_name, :comment => "总帐名称"
       t.timestamps
     end
     create_default

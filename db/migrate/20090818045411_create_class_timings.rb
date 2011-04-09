@@ -1,11 +1,12 @@
+#上课时间
 class CreateClassTimings < ActiveRecord::Migration
   def self.up
     create_table :class_timings do |t|
-      t.references :batch
-      t.string     :name
-      t.time       :start_time
-      t.time       :end_time
-      t.boolean    :is_break
+      t.references :batch, :comment => "关联学期"
+      t.string     :name, :comment => "名称"
+      t.time       :start_time, :comment => "开始时间"
+      t.time       :end_time, :comment => "结束时间"
+      t.boolean    :is_break, :comment => "是否是休息时间"
     end
     create_defaults
   end

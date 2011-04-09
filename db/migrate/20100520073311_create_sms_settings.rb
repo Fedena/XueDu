@@ -1,8 +1,9 @@
+#短信管理
 class CreateSmsSettings < ActiveRecord::Migration
   def self.up
     create_table :sms_settings do |t|
-      t.string :settings_key
-      t.boolean :is_enabled, :default=>false
+      t.string :settings_key, :comment => "键设置"
+      t.boolean :is_enabled, :default=>false, :comment => "是否启用"
     end
     create_default
   end

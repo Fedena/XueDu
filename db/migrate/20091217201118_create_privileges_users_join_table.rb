@@ -1,3 +1,4 @@
+#用户权限
 class CreatePrivilegesUsersJoinTable < ActiveRecord::Migration
   def self.up
     create_table :privileges_users, :id => false do |t|

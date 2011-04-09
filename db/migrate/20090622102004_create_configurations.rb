@@ -1,8 +1,9 @@
+#配置
 class CreateConfigurations < ActiveRecord::Migration
   def self.up
     create_table :configurations do |t|
-      t.string :config_key
-      t.string :config_value
+      t.string :config_key, :comment => "键"
+      t.string :config_value, :comment => "值"
     end
     create_default
   end
@@ -23,8 +24,8 @@ class CreateConfigurations < ActiveRecord::Migration
     Configuration.create :config_key => "TotalSmsCount", :config_value=>"0"
     Configuration.create :config_key => "AvailableModules", :config_value=>"HR"
     Configuration.create :config_key => "AvailableModules", :config_value=>"Finance"
-    Configuration.create :config_key => "AvailableModules", :config_value=>"SMS"
-    Configuration.create :config_key => "AvailableModules", :config_value=>"CAMPUSES"
+    Configuration.create :config_key => "AvailableModules", :config_value => "SMS"
+    Configuration.create :config_key => "AvailableModules", :config_value => "Compus"
   end
 
 end

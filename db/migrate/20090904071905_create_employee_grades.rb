@@ -1,11 +1,12 @@
+#职员等级
 class CreateEmployeeGrades < ActiveRecord::Migration
   def self.up
     create_table :employee_grades do |t|
-      t.string :name
-      t.integer :priority
-      t.boolean :status
-      t.integer :max_hours_day
-      t.integer :max_hours_week
+      t.string :name, :comment => "名称"
+      t.integer :priority, :comment => "优先级"
+      t.boolean :status, :comment => "状态"
+      t.integer :max_hours_day, :comment => "最大天数"
+      t.integer :max_hours_week, :comment => "最大周期"
     end
        create_default
   end

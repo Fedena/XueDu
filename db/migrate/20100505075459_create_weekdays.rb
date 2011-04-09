@@ -1,8 +1,9 @@
+#星期
 class CreateWeekdays < ActiveRecord::Migration
   def self.up
     create_table :weekdays do |t|
-      t.references :batch
-      t.string :weekday
+      t.references :batch, :comment => "关联学期"
+      t.string :weekday, :comment => "日期"
     end
      create_default
   end
