@@ -1,8 +1,8 @@
 
 <div id="content-header">
   <img src="/images/show_settings.png" />
-  <h1>Configuration</h1>
-  <h3>Configuration home</h3>
+  <h1><%= t 'Cfg.Configuration' %></h1>
+  <h3><%= t 'Cfg.Configuration_home' %></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -18,8 +18,8 @@
 
     <% if permitted_to? :create, :courses %>
       <div class="link-box">
-        <div class="link-heading"><%= link_to "Manage Courses / Batches", courses_path %></div>
-        <div class="link-descr">Add a new Course or Batch for this academic year.</div>
+        <div class="link-heading"><%= link_to t('Cfg.Manage_Courses_Batches'), courses_path %></div>
+        <div class="link-descr"><%= t 'Cfg.Add_Course_Batche' %></div>
       </div>
     <% end %>
 

@@ -1,8 +1,8 @@
 
 <div id="content-header">
   <img src="/images/admission/admission_page_logo.jpg" />
-  <h1>Admission</h1>
-  <h3>Step 1 - Student details</h3>
+  <h1><%= t 'student.Admission' %></h1>
+  <h3><%= t 'student.head' %></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -10,7 +10,7 @@
 
 <div id="page-yield">
   <% if @config.config_value == '0' %>
-  <p class="flash-msg">Admission no. of last student is <%= @last_admitted_student.admission_no %> </p>
+  <p class="flash-msg">最后录取的学生学号<%= @last_admitted_student.admission_no %> </p>
   <% end %>
 
   <% unless flash[:notice].nil? %>
@@ -22,7 +22,7 @@
 
     <div id="admission1_form">
 
-      <div id="necessary-field-notification"> Fields marked with <span class="necessary-field">*</span> must be filled.</div>
+      <div id="necessary-field-notification"> 输入框标有 <span class="necessary-field">*</span> 为必填项.</div>
 
       <div id="autofill-area">
 
