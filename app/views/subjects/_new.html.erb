@@ -31,6 +31,16 @@
     <div class="input-container"><%= f.check_box :no_exams %></div>
   </div>
 
+  <div class="label-field-pair">
+    <div class="label-container"><%= f.label :no_classroom %></div>
+    <div class="label-container"><%= f.check_box :no_classroom, :id=>"aa", :checked=>true, :onclick=>"chg()" %></div>
+  </div>
+
+  <div class="label-field-pair" id="bb" style="display:none">
+    <label for="subject_classroom">School && Classroom</label>
+    <div class="text-input-bg" ><%= select :subject, :classroom_id, select_classroom_option %></div>
+  </div>
+
    <%= f.submit  "", :value => "► Save", :class => "submit_button" %>
 
   <% end %>

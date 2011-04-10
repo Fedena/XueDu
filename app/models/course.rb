@@ -2,6 +2,7 @@ class Course < ActiveRecord::Base
   validates_presence_of :course_name, :code
   validate :presence_of_initial_batch, :on => :create
 
+  #期次
   has_many :batches
   accepts_nested_attributes_for :batches
 

@@ -4,6 +4,7 @@ class Employee < ActiveRecord::Base
   belongs_to  :employee_grade
   belongs_to  :employee_department
   belongs_to  :nationality, :class_name => 'Country'
+  #关联课程
   has_and_belongs_to_many :subjects
   has_many    :timetable_entries
   has_many    :employee_bank_details

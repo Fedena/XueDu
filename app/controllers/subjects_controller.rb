@@ -43,6 +43,10 @@ class SubjectsController < ApplicationController
   def update
     @subject = Subject.find params[:id]
     @batch = @subject.batch
+    #无论下拉选项选择什么教室，只要选中no_classroom则不进行关联教室
+    if params[:subject][:no_classroom] == '1' 
+      params[:subject][:classroom_id] = nil
+    end
     if @subject.update_attributes(params[:subject])
       if params[:subject][:elective_group_id] == ""
         @subjects = @subject.batch.normal_batch_subject
@@ -76,6 +80,11 @@ class SubjectsController < ApplicationController
     respond_to do |format|
       format.js { render :action => 'show' }
     end
+  end
+
+  #关联教室时查看课程
+  def view
+    @subject = Subject.find params[:id]
   end
 
 end
