@@ -1,2 +1,2 @@
 
-page.replace_html 'sms-box',:text=>"SMS sent across batches and empoloyee departments."
+page.replace_html 'sms-box',:text=>"短信发送跨越了学期和员工部门."

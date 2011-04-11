@@ -28,7 +28,7 @@ class ClassroomsController < ApplicationController
       flash[:notice] = m('classroom.update.success')
       redirect_to [@school, @classroom] 
     else
-      flash[:notice] = t('msg.classroom.must_fill')
+      flash[:notice] = t('msg.must_fill')
       redirect_to edit_school_classroom_path(@school, @classroom)
     end
   end

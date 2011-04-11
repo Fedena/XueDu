@@ -75,7 +75,7 @@ class SmsController < ApplicationController
         end
       end
       render(:update) do |page|
-        page.replace_html 'status-message',:text=>"<p class=\"flash-msg\"> SMS sent successfully selected students and their guardians</p>"
+        page.replace_html 'status-message',:text=>"<p class=\"flash-msg\"> 短信已成功发送给选中的学生和他们的家长.</p>"
         page.visual_effect(:highlight, 'status-message')
       end
     end
@@ -117,7 +117,7 @@ class SmsController < ApplicationController
         end
       end
       render(:update) do |page|
-        page.replace_html 'status-message',:text=>"<p class=\"flash-msg\">SMS sent successfully to students(guardians) of selected course</p>"
+        page.replace_html 'status-message',:text=>"<p class=\"flash-msg\">短信已成功发送给选中的课程所关联的学生(家长).</p>"
         page.visual_effect(:highlight, 'status-message')
       end
     end
@@ -184,7 +184,7 @@ class SmsController < ApplicationController
         end
       end
       render(:update) do |page|
-        page.replace_html 'status-message',:text=>"<p class=\"flash-msg\">SMS sent successfully to selected employees</p>"
+        page.replace_html 'status-message',:text=>"<p class=\"flash-msg\">短信已成功发送给选中的员工.</p>"
         page.visual_effect(:highlight, 'status-message')
       end
     end
@@ -218,7 +218,7 @@ class SmsController < ApplicationController
         end
       end
       render(:update) do |page|
-        page.replace_html 'status-message',:text=>"<p class=\"flash-msg\">SMS sent successfully to employees of selected department</p>"
+        page.replace_html 'status-message',:text=>"<p class=\"flash-msg\">短信已成功发送给选中的部门下的所有员工.</p>"
         page.visual_effect(:highlight, 'status-message')
       end
     end
