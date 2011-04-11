@@ -1,7 +1,7 @@
  <div id="content-header">
     <img src="/images/show_settings.png" />
-  <h1>Compuses</h1>
-  <h3>Classrooms</h3>
+  <h1><%= t 'School' %></h1>
+  <h3><%= t 'Classroom' %></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -21,9 +21,9 @@
 
  <div class="box">
    <div class="bread_crumb">
-    <%= link_to 'Compuses', schools_path %> &raquo;
+    <%= link_to t('School'), schools_path %> &raquo;
     <%= link_to @school.full_name, @school %> &raquo;
-    Classroom <%= @classroom.name %>
+    <%= t 'Classroom' %> <%= @classroom.name %>
         </div>
 
 

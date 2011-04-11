@@ -1,7 +1,7 @@
 <div id="content-header">
   <img src="/images/examination/show_exam.png" alt="Exam" />
-  <h1>Courses</h1>
-  <h3>New Batch</h3>
+  <h1><%= t 'Courses' %></h1>
+  <h3><%= t 'New_batch' %></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -16,9 +16,9 @@
 
   <div class="box">
     <div class="bread_crumb">
-      <%= link_to 'Courses', courses_path %> &raquo;
+      <%= link_to t('Courses'), courses_path %> &raquo;
       <%= link_to @course.full_name, @course %> &raquo;
-      New batch
+      <%= t 'New_batch' %>
     </div>
 
     <% form_for [@course, @batch] do |f| %>
@@ -39,7 +39,7 @@
         <div class="input-container"><%= calendar_date_select_tag 'batch[end_date]', Date.today + 1.year %></div>
       </div>
 
-      <%= submit_tag "", :value => "► Save", :class => "submit_button" %>
+      <%= submit_tag "", :value => "► 保存", :class => "submit_button" %>
 
     <% end %>
 

@@ -1,7 +1,7 @@
 <div id="content-header">
   <img src="/images/show_news/show_news_logo.png" alt="Exam" />
-  <h1>SMS</h1>
-  <h3>Batches</h3>
+  <h1><%= t 'SMS' %></h1>
+  <h3><%= t 'Batch' %></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -15,8 +15,8 @@
         :success => "Element.hide('loader')" do |sms| %>
 <div id="list">
    <div class="sel-list">
-  Select : <%= link_to_function 'All', "$$('input.right').each(function(checkbox) { checkbox.checked = true; });" %>,
-<%= link_to_function 'None', "$$('input.right').each(function(checkbox) { checkbox.checked = false; });" %>
+  选择: <%= link_to_function t('All'), "$$('input.right').each(function(checkbox) { checkbox.checked = true; });" %>,
+<%= link_to_function t('None'), "$$('input.right').each(function(checkbox) { checkbox.checked = false; });" %>
   </div>
 <% @batches.each do |batch| %>
 <div class="name_list<%=cycle('odd', 'even')%>"><li>
@@ -29,7 +29,7 @@
 <%= text_area :send_sms,:message, :rows=>5,:cols=>30 %>
 </div>
 </div>
-<%= submit_tag 'Send SMS',:class=>'submit_button' %>
+<%= submit_tag t('send_sms'),:class=>'submit_button' %>
 <% end %>
   </div>
 <div id="status-message">

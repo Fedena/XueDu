@@ -1,7 +1,7 @@
 <div id="content-header">
   <img src="/images/examination/show_exam.png" alt="Exam" />
-  <h1>Compuses</h1>
-  <h3>New</h3>
+  <h1><%= t 'School' %></h1>
+  <h3><%= t 'New' %></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -15,8 +15,8 @@
 
   <div class="box">
     <div class="bread_crumb">
-      <%= link_to 'Compuses', schools_path%> &raquo;
-      New
+      <%= link_to t('School'), schools_path%> &raquo;
+      <%= t 'New' %>
     </div>
 
     <% form_for setup_compus(@school) do |f| %>
@@ -33,7 +33,7 @@
         <div class="input-container"><%= f.text_field :school_code %></div>
       </div>
 
-      <h4>Initial classroom details</h4>
+      <h4><%= t 'init_classroom' %></h4>
 
       <% f.fields_for :classrooms do |classroom_form| %>
 
@@ -53,7 +53,7 @@
         </div>
 
       <% end %>
-      <%= submit_tag "", :value => "► Save", :class => "submit_button" %>
+      <%= submit_tag "", :value => "► 保存", :class => "submit_button" %>
 
     <% end %>
 

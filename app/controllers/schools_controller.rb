@@ -14,7 +14,7 @@ class SchoolsController < ApplicationController
   def create
     @school = School.new(params[:school])
     if @school.save
-      flash[:notice] = 'Created compus sucessfully.'
+      flash[:notice] = m('school.create.success')
       redirect_to :action=>'manage_compus'
     else
       render 'new'
@@ -26,7 +26,7 @@ class SchoolsController < ApplicationController
 
   def update
     if @school.update_attributes(params[:school])
-      flash[:notice] = 'Updated compus details successfully.'
+      flash[:notice] = m('school.update.success')
       redirect_to :action=>'manage_compus'
     else
       render 'edit'
@@ -36,10 +36,10 @@ class SchoolsController < ApplicationController
   def destroy
     if @school.classrooms.active.empty?
       @school.inactivate
-       flash[:notice]="Compus deleted successfully."
+      flash[:notice] = m('school.delete.success')
       redirect_to :action=>'manage_compus'
     else
-      flash[:warn_notice]="<p>Unable to Delete. Please remove exising classrooms.</p>"
+      flash[:warn_notice] = m('school.delete.school_unable') 
       redirect_to :action=>'manage_compus'
     end
   end

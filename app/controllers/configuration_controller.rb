@@ -14,11 +14,11 @@ class ConfigurationController < ApplicationController
       unless params[:upload].nil?
         @temp_file=params[:upload][:datafile]
         unless FILE_EXTENSIONS.include?(File.extname(@temp_file.original_filename).downcase)
-          flash[:notice] = 'Invalid Extention. Image must be .JPG'
+          flash[:notice] = t('msg.configuration.invalid')
           redirect_to :action => "settings"  and return
         end
         if @temp_file.size > FILE_MAXIMUM_SIZE_FOR_FILE
-          flash[:notice] = 'File too large. File size should be less than 1 MB'
+          flash[:notice] = t('msg.configuration.too_large')
           redirect_to :action => "settings" and return
         end
       end

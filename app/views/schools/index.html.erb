@@ -1,7 +1,7 @@
 <div id="content-header">
     <img src="/images/show_settings.png" alt="Schools" />
-  <h1>Compuses</h1>
-  <h3>Home</h3>
+  <h1><%= t 'School' %></h1>
+  <h3><%= t 'Home' %></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -16,12 +16,12 @@
   <div class="box">
 
     <div class="link-box">
-      <div class="link-heading"><%= link_to 'Manage compuses' ,:action=>'manage_compus' %> </div>
-      <div class="link-descr">Manage Compus and create classrooms</div>
+      <div class="link-heading"><%= link_to t('Manage_compuse'), :action => 'manage_compus' %> </div>
+      <div class="link-descr"><%= t 'Manage_compuse_and_classroom' %></div>
     </div>
     <div class="link-box">
-      <div class="link-heading"><%= link_to 'Manage Classrooms' ,:action=>'manage_classrooms' %>  </div>
-      <div class="link-descr">Manage active classrooms</div>
+      <div class="link-heading"><%= link_to t('Manage_classroom'),:action=>'manage_classrooms' %>  </div>
+      <div class="link-descr"><%= t 'Manage_active_classroom'%></div>
     </div>
 
     <div class="extender"></div>

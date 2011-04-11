@@ -41,7 +41,7 @@ module ApplicationHelper
   #author by wangqun
   #since 2011-04-02
   def select_classroom_option(list = Classroom.active, param_hash = {})
-    options = [["Select a Classroom", ""]]
+    options = [["选择一个教室", ""]]
     list.each do |c|
       options += [[c.full_name, c.id]]
     end

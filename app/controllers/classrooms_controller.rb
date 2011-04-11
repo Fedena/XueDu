@@ -13,7 +13,7 @@ class ClassroomsController < ApplicationController
   def create
     @classroom = @school.classrooms.build(params[:classroom])
     if @classroom.save
-      flash[:notice] = 'Classroom created successfully.'
+      flash[:notice] = m('classroom.create.success')
       redirect_to [@school, @classroom] 
     else
       render 'new'
@@ -25,10 +25,10 @@ class ClassroomsController < ApplicationController
 
   def update
     if @classroom.update_attributes(params[:classroom])
-      flash[:notice] = 'Updated classroom details successfully.'
+      flash[:notice] = m('classroom.update.success')
       redirect_to [@school, @classroom] 
     else
-      flash[:notice] = "Please fill all feilds."
+      flash[:notice] = t('msg.classroom.must_fill')
       redirect_to edit_school_classroom_path(@school, @classroom)
     end
   end
@@ -42,10 +42,10 @@ class ClassroomsController < ApplicationController
   def destroy
     if @classroom.subjects.empty?
       @classroom.inactivate
-      flash[:notice] = 'Classroom deleted successfully.'
+      flash[:notice] = m('classroom.delete.success')
       redirect_to @school
     else
-      flash[:warn_notice] = '<p>Unable to delete Classroom.Please delete all Subjects first.</p>' if @classroom.subjects.empty?
+      flash[:warn_notice] = t('msg.classroom.unable_delete') if @classroom.subjects.empty?
       redirect_to [@school, @classroom] 
     end
   end

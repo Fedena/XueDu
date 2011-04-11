@@ -44,11 +44,76 @@ zh-CN:
   Manage_Courses_and_create_batches: "管理课程及新建期次"
   Manage_Batches: "管理期次"
   Manage_active_batches: "管理当前可用期次"
+  Active_batches: "当前期次"
+
+  Batch: "期次"
+  New_batch: "新增期次"
+  Edit_batch: "编辑期次"
+
+  Exams: "考试"
+  Electives: "选修"
+  New_electives: "新增选修课"
+  Show_electives: "查看选修课"
+
+  Elective_group: "选修组"
+  Assign_all: "指定所有"
+  Remove_all: "删除所有"
+  Assign: "指定"
+
+  Subjects: "课目"
+  Add_Normal_Subject: "新增普通课目"
+  Add_subject_to_elective: "添加课目到选修组"
+  New_elective_group: "新增选修组"
+  Assign_students: "指定学生"
+
+  Student_setting: "学生设置"
+  Add_additional_detail: "新增附加内容"
+  Edit_additional_detail: "编辑附加内容"
+  No_details: "没有找到相关的附加内容"
+  Field_name: "字段名"
+
+  SMS: "短信平台"
+  SMS_setting: "短信设置"
+  SMS_setting_page: "设置短信页面"
+  SMS_to_student: "学生短信"
+  Send_SMS_to_stu: "给学生发送短信"
+  SMS_to_batch: "学期短信"
+  Send_SMS_to_batch: "给学期发送短信"
+  SMS_to_employee: "员工短信"
+  Send_SMS_to_employ: "给员工发送短信"
+  SMS_to_employee_dep: "员工部门短信"
+  Send_SMS_to_employ_dep: "给员工部门发送短信"
+  SMS_to_all: "所有短信"
+  Send_SMS_to_all: "给所有人发送短信"
+  General_SMS_setting: "基本短信设置:"
+  send_sms: "发送短信"
+
+  Employee: "员工"
+  Department: "部门"
+
+  School: "校区"
+  Manage_compuse: "管理校区"
+  Manage_compuse_and_classroom: "管理校区并新增教室"
+  Manage_classroom: "管理教室"
+  Manage_active_classroom: "管理现有的教室"
+  init_classroom: "教室初始化详情"
+
+  Classroom: "教室"
+  New_classroom: "新建教室"
+  Edit_classroom: "编辑教室"
+
   New: "新建"
+  Add: "添加"
   Edit: "编辑"
+  Save: "保存"
   Delete: "删除"
+  Show: "查看"
+  All: "全选"
+  None: "不选"
   Are_you_sure: "你确定执行此操作?"
   Select_a_course: "选择一个课程"
+  Select_a_batch: "选择一个期次"
+  Select_a_dep: "选择一个部门"
   Grading_system: "记分等级"
   Batch_transfers: "期次转移"
   login:
@@ -92,6 +157,9 @@ zh-CN:
     Settings_has_been_saved: "设置已保存"
   name: "名称"
   student:
+    Categories: "分类"
+    enter_category: "输入新分类："
+    edit_category: "编辑分类："
     Admission: "录取"
     head: "第一步 - 学生档案"
     stu_no: "学号"
@@ -106,7 +174,13 @@ zh-CN:
 
   activerecord:
     models:
+      school: "校区"
+      classroom: "教室"
       course: "课程"
+      student: "学生"
+      student_category: "学生分类"
+      elective_group: "选修组"
+      configuration: "设置"
 
     errors:
       template: # ~ 2.3.5 backward compatible
@@ -162,11 +236,33 @@ zh-CN:
     update:
       success: "更新{{model}}成功."
       failure: "更新{{model}}失败."
+    save:
+      success: "{{model}}保存成功."
+      failure: "{{model}}保存失败."
+      student_success: "{{model}}记录保存成功.请填写家长资料."
     delete:
       success: "删除{{model}}成功."
       failure: "删除{{model}}失败."
-      unable: "不能删除.请先删除存在的期次和学生信息."
+      unable: "<p>不能删除.请先删除存在的期次和学生信息.</p>"
+      school_unable: "<p>不能删除. 请先删除已存在的教室.</p>"
     course:
       success: "年级创建成功."
       update_sucess: "年级更新成功."
       delete: "年级删除成功."
+    student:
+      additional_save: "附加信息保存成功."
+      additional_update: "附加信息更新成功."
+      delete_success: "删除成功."
+      unable_delete: "不能删除."
+      update: "{{model}}记录更新成功."
+      parent_update: "家长记录更新成功."
+      guardians_delete: "监护人删除成功."
+    school:
+    classroom:
+      must_fill: "请填写所有的必填字段."
+      unable_delete: "<p>不能删除教室.请先删除与之关联的所有课目.</p>"
+    configuration:
+      invalid: "无效的延伸.图片必须为.JPG格式."
+      too_large: "文件太大.文件大小不大于1MB."
+
+      

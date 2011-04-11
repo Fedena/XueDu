@@ -1,14 +1,14 @@
 <div id="content-header">
   <img src="/images/examination/show_exam.png" alt="Exam" />
-  <h1>Batches</h1>
-  <h3>New Electives</h3>
+  <h1><%= t 'Batch' %></h1>
+  <h3><%= t 'New_electives' %></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
 </div>
 <div id="inner-tab-menu">
   <ul>
-    <li><%= link_to 'New', new_batch_elective_group_path(@batch) %></li>
+    <li><%= link_to t('New'), new_batch_elective_group_path(@batch) %></li>
 
   </ul>
 </div>
@@ -19,11 +19,11 @@
   <% end %>
     
 <div class="bread_crumb">
-        <%= link_to 'Courses', courses_path %> &raquo;
+        <%= link_to t('Courses'), courses_path %> &raquo;
         <%= link_to @course.full_name, @course %> &raquo;
-        <%= link_to "Batch #{@batch.name}", [@course, @batch] %> &raquo;
-        <%= link_to 'Electives', batch_elective_groups_path(@batch) %> &raquo;
-        New
+        <%= link_to "#{t('Batch')} #{@batch.name}", [@course, @batch] %> &raquo;
+        <%= link_to t('Electives'), batch_elective_groups_path(@batch) %> &raquo;
+        <%= t 'New' %>
         </div>
   <div class="box">
 
@@ -36,7 +36,7 @@
         <div class="input-container"><%= f.text_field :name %></div>
       </div>
 
-      <%= submit_tag "", :value => "► Save", :class => "submit_button" %>
+      <%= submit_tag "", :value => "► 保存", :class => "submit_button" %>
 
     <% end %>
 

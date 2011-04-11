@@ -1,7 +1,7 @@
 <div id="content-header">
   <img src="/images/show_news/show_news_logo.png" alt="" />
-  <h1>SMS</h1>
-  <h3>Departments</h3>
+  <h1><%= t 'SMS' %></h1>
+  <h3><%= t 'Department' %></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -16,8 +16,8 @@
 
     <div id="list">
       <div class="sel-list">
-        Select : <%= link_to_function 'All', "$$('input.right').each(function(checkbox) { checkbox.checked = true; });" %>,
-<%= link_to_function 'None', "$$('input.right').each(function(checkbox) { checkbox.checked = false; });" %>
+        选择: <%= link_to_function t('All'), "$$('input.right').each(function(checkbox) { checkbox.checked = true; });" %>,
+<%= link_to_function t('None'), "$$('input.right').each(function(checkbox) { checkbox.checked = false; });" %>
       </div>
 <% @departments.each do |dept| %>
      <div class="name_list<%=cycle('odd', 'even')%>"><li>
@@ -31,7 +31,7 @@
 <%= text_area :send_sms,:message, :rows=>5,:cols=>30 %><br/>
 </div>
 </div>
-  <%= submit_tag 'Send SMS',:class=>'submit_button' %>
+  <%= submit_tag t('send_sms'),:class=>'submit_button' %>
 
 <% end %>
 

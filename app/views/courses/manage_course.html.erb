@@ -34,7 +34,8 @@
     <% @courses.each do |course| %>
       <li class="list<%=cycle('odd', 'even')%>">
         <div class="category-name"><%= link_to course.full_name, course %></div>
-        <div class="category-edit"><%= link_to t('Edit'), edit_course_path(course) if permitted_to? :edit, :courses %></div><div class="category-delete">   <%= link_to(t('Delete'), course_path(course), :method => 'delete', :confirm => t('Are_you_sure')) if permitted_to? :destroy, :courses %></div>
+        <div class="category-edit"><%= link_to t('Edit'), edit_course_path(course) if permitted_to? :edit, :courses %></div>
+        <div class="category-delete"><%= link_to(t('Delete'), course_path(course), :method => 'delete', :confirm => t('Are_you_sure')) if permitted_to? :destroy, :courses %></div>
       </li>
      <% end %>
 

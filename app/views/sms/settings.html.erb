@@ -1,7 +1,7 @@
 <div id="content-header">
   <img src="/images/show_news/show_news_logo.png" alt="" />
-  <h1>SMS</h1>
-  <h3>Settings</h3>
+  <h1><%= t 'SMS' %></h1>
+  <h3><%= t 'Settings' %></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -14,11 +14,11 @@
   <label><%= s.check_box :application_enabled, :checked=>@application_sms_enabled.is_enabled %>
   <div class="att_list_names">Application</div> </label>
   </li></div>
-      <%= s.submit "Update", :class=>'submit_button' %>
+      <%= s.submit "更新", :class=>'submit_button' %>
   </div>
 <% end %>
 <% unless @application_sms_enabled.is_enabled == false %>
-  <h4>General SMS Settings:</h4>
+  <h4><%= t 'General_SMS_setting' %></h4>
   <% form_for :general_settings, :url=>{:controller=>"sms",:action=>"update_general_sms_settings"} do |sms| %>
 
   <div id="list">
@@ -52,7 +52,7 @@
   </li>  </div>
 
   
-    <%= sms.submit "Update",:class=>'submit_button' %>
+    <%= sms.submit "更新",:class=>'submit_button' %>
 </div>
   <% end %>
 <% end %>

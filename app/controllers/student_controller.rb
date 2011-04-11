@@ -72,7 +72,7 @@ class StudentController < ApplicationController
             sms.send_sms
           end
         end
-        flash[:notice] = "Student Record Saved Successfully. Please fill the Parent Details."
+        flash[:notice] = m('student.save.student_success')
         redirect_to :controller => "student", :action => "admission2", :id => @student.id
       end
     end
@@ -172,7 +172,7 @@ class StudentController < ApplicationController
         StudentAdditionalDetails.create(:student_id => params[:id],
           :additional_field_id => k,:additional_info => v['additional_info'])
       end
-      flash[:notice] = "Student records saved for #{@student.first_name} #{@student.last_name}."
+      flash[:notice] = "学生记录保存为 #{@student.first_name} #{@student.last_name}."
       redirect_to :controller => "student", :action => "profile", :id => @student.id
     end
   end
@@ -196,7 +196,7 @@ class StudentController < ApplicationController
           StudentAdditionalDetails.create(:student_id=>@student.id,:additional_field_id=>k,:additional_info=>v['additional_info'])
         end
       end
-      flash[:notice] = "Student #{@student.first_name} additional details updated"
+      flash[:notice] = "学生 #{@student.first_name} 附件信息更新成功."
       redirect_to :action => "profile", :id => @student.id
     end
   end
@@ -204,7 +204,7 @@ class StudentController < ApplicationController
     @additional_details = StudentAdditionalField.find(:all)
     @additional_field = StudentAdditionalField.new(params[:additional_field])
     if request.post? and @additional_field.save
-      flash[:notice] = "Additional field created"
+      flash[:notice] = t('msg.student.additional_save')
       redirect_to :controller => "student", :action => "add_additional_details"
     end
   end
@@ -212,7 +212,7 @@ class StudentController < ApplicationController
   def edit_additional_details
     @additional_details = StudentAdditionalField.find(params[:id])
     if request.post? and @additional_details.update_attributes(params[:additional_details])
-      flash[:notice] = "Additional details updated"
+      flash[:notice] = t('msg.student.additional_update')
       redirect_to :action => "add_additional_details"
     end
   end
@@ -222,10 +222,10 @@ class StudentController < ApplicationController
     if students.empty?
       StudentAdditionalField.find(params[:id]).destroy
       @additional_details = StudentAdditionalField.find(:all)
-      flash[:notice]="Successfully deleted!"
+      flash[:notice] = t('msg.student.delete_success')
       redirect_to :action => "add_additional_details"
     else
-      flash[:notice]="Unable to delete!"
+      flash[:notice] = t('msg.student.unable_delete') 
       redirect_to :action => "add_additional_details"
     end
   end
@@ -264,7 +264,7 @@ class StudentController < ApplicationController
     student = Student.find(params[:id])
     user = User.destroy_all(:username => student.admission_no) unless user.nil?
     Student.destroy(params[:id])
-    flash[:notice] = "All records have been deleted for student with admission no. #{student.admission_no}."
+    flash[:notice] = "学号为 #{student.admission_no} 的所有记录已经删除."
     redirect_to :controller => 'user', :action => 'dashboard'
   end
 
@@ -274,7 +274,7 @@ class StudentController < ApplicationController
     @application_sms_enabled = SmsSetting.find_by_settings_key("ApplicationEnabled")
 
     if request.post? and @student.update_attributes(params[:student])
-      flash[:notice] = "Student's Record updated successfully!"
+      flash[:notice] = t('msg.student.update')
       redirect_to :controller => "student", :action => "profile", :id => @student.id
     end
   end
@@ -284,7 +284,7 @@ class StudentController < ApplicationController
     @student = Student.find(@parent.ward_id)
     @countries = Country.all
     if request.post? and @parent.update_attributes(params[:parent_detail])
-      flash[:notice] = "Parent Record updated!"
+      flash[:notice] = t('msg.student.parent_update') 
       redirect_to :controller => "student", :action => "guardians", :id => @student.id
     end
   end
@@ -304,7 +304,7 @@ class StudentController < ApplicationController
       end
       recipients = recipient_list.join(', ')
       FedenaMailer::deliver_email(sender,recipients, params['email']['subject'], params['email']['message'])
-      flash[:notice] = "Mail sent to #{recipients}"
+      flash[:notice] = "发送邮件给 #{recipients}"
       redirect_to :controller => 'student', :action => 'profile', :id => @student.id
     end
   end
@@ -389,7 +389,7 @@ class StudentController < ApplicationController
     @parent_info = Guardian.new(params[:parent_detail])
     @countries = Country.all
     if request.post? and @parent_info.save
-      flash[:notice] = "Parent details saved for #{@parent_info.ward_id}"
+      flash[:notice] = "家长信息保存为 #{@parent_info.ward_id}"
       redirect_to :controller => "student" , :action => "admission3_1", :id => @parent_info.ward_id
     end
   end
@@ -430,12 +430,12 @@ class StudentController < ApplicationController
     @student = @guardian.ward
     if @guardian.is_immediate_contact?
       if @guardian.destroy
-        flash[:notice] = "Guardian has been deleted"
+        flash[:notice] = t('msg.student.guardians_delete') 
         redirect_to :controller => 'student', :action => 'admission3', :id => @student.id
       end
     else
       if @guardian.destroy
-        flash[:notice] = "Guardian has been deleted"
+        flash[:notice] = t('msg.student.guardians_delete') 
         redirect_to :controller => 'student', :action => 'profile', :id => @student.id
       end
     end
@@ -470,7 +470,7 @@ class StudentController < ApplicationController
     @student_categories = StudentCategory.find :all
     @student_category = StudentCategory.new(params[:student_category])
     if request.post? and @student_category.save
-      flash[:notice] = "Student category has been saved."
+      flash[:notice] = m('student_category.save.success')
       redirect_to :action => 'categories'
     end
   end
@@ -500,7 +500,7 @@ class StudentController < ApplicationController
     if params[:search]
       unless params[:advv_search][:course_id].empty?
         if params[:search][:batch_id_equals].empty?
-          flash[:notice] ="Please select a batch."
+          flash[:notice] = "请选择期次."
           redirect_to :action=>'advanced_search'
         end
       end

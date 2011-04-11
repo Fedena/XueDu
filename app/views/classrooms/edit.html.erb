@@ -1,7 +1,7 @@
 <div id="content-header">
   <img src="/images/examination/show_exam.png" alt="Exam" />
-  <h1>Compuses</h1>
-  <h3>Edit Classroom</h3>
+  <h1><%= t 'School' %></h1>
+  <h3><%= t 'Edit_classroom' %></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -16,10 +16,10 @@
 
   <div class="box">
     <div class="bread_crumb">
-      <%= link_to 'Compuses', schools_path %> &raquo;
+      <%= link_to t('School'), schools_path %> &raquo;
       <%= link_to @school.full_name, @school %> &raquo;
-      <%= link_to "Classroom #{@classroom.name}", edit_school_classroom_path %> &raquo;
-      Edit
+      <%= link_to "#{t('Classroom')} #{@classroom.name}", edit_school_classroom_path %> &raquo;
+      <%= t 'Edit' %>
     </div>
 
 
@@ -40,7 +40,7 @@
         <div class="input-container"><%= f.text_field :seats %></div>
       </div>
 
-      <%= submit_tag "", :value => "► Save", :class => "submit_button" %>
+      <%= submit_tag "", :value => "► 保存", :class => "submit_button" %>
 
 
     <% end %>
