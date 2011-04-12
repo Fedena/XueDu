@@ -1,7 +1,7 @@
 <div id="content-header">
     <img src="/images/show_settings.png" />
-  <h1>Compuses</h1>
-  <h3>Manage Classrooms</h3>
+  <h1><%= t 'School' %></h1>
+  <h3><%= t 'Manage_classroom'%></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -9,7 +9,7 @@
 
 <div id="inner-tab-menu">
   <ul>
-    <li><%= link_to 'Subjects', subjects_path %> </li>
+    <li><%= link_to t('Subjects'), subjects_path %> </li>
   </ul>
 </div>
 
@@ -23,13 +23,13 @@
 
 <div class="box">
 <div class="label-field-pair">
-   <label for="student_compus">Select a compus:
+   <label for="student_compus"><%= t 'Select_a_compuse'%>:
 <%= image_tag("loader.gif",:align => "absmiddle",:border => 0,:id => "loader", :style =>"display: none;" ) %>
    </label>
    <div class="text-input-bg">
   <%= select :school, :name,
         School.active.map {|c| [c.school_name, c.id]},
-        {:prompt => 'Select a compus'},
+        {:prompt => t('Select_a_compuse')},
         {:onChange => "#{remote_function(:url => {:action => "update_classroom"},
         :with => "'school_name='+ value",
         :before => "Element.show('loader')",

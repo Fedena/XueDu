@@ -24,7 +24,7 @@ class BatchTransfersController < ApplicationController
     if @stu.empty?
       batch.update_attribute :is_active, false
     end
-    flash[:notice] = 'Trasferred students sucessfully.'
+    flash[:notice] = t('msg.transfer')
     redirect_to :controller => 'batch_transfers'
   end
 
@@ -46,7 +46,7 @@ class BatchTransfersController < ApplicationController
       if @stu.empty?
         @batch.update_attribute :is_active, false
       end
-      flash[:notice]="Graduated selected students successfully."
+      flash[:notice]= t('msg.graduation')
       redirect_to :action=>"graduation", :id=>params[:id], :ids => @admission_list
     end
   end

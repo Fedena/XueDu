@@ -1,4 +1,4 @@
-#增加考试分组
+#额外考试分组
 class CreateAdditionalExamGroups < ActiveRecord::Migration
   def self.up
     create_table :additional_exam_groups do |t|

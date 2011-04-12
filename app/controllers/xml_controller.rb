@@ -13,7 +13,7 @@ class XmlController < ApplicationController
     @xml = Xml.get_multiple_finance_as_hash ['Salary', 'Fee', 'Donation']
     if request.post?
       Xml.set_ledger_name(params[:xml_settings])
-      flash[:notice] = "XML settings updated successfully"
+      flash[:notice] = "XML设置更新成功."
       redirect_to  :action => "settings"
     end
   end

@@ -22,10 +22,10 @@ class ReminderController < ApplicationController
           Reminder.create(:sender => @user.id, :recipient => user.id, :subject=>params[:reminder][:subject],
             :body=>params[:reminder][:body], :is_read=>false, :is_deleted_by_sender=>false,:is_deleted_by_recipient=>false)
         end
-        flash[:notice] = "Message sent successfully"
+        flash[:notice] = "消息发送成功."
         redirect_to :controller=>"reminder", :action=>"create_reminder"
       else
-        flash[:notice]="<b>ERROR:</b>Please fill the required fields to create this message"
+        flash[:notice]="<b>错误:</b>请在创建消息时填写必填项."
         redirect_to :controller=>"reminder", :action=>"create_reminder"
       end
     end
@@ -104,7 +104,7 @@ class ReminderController < ApplicationController
   def delete_reminder_by_sender
     @sent_reminder = Reminder.find(params[:id2])
     Reminder.update(@sent_reminder.id, :is_deleted_by_sender => true)
-    flash[:notice] = "Reminder deleted."
+    flash[:notice] = m('reminder.delete.success')
     redirect_to :action =>"sent_reminder"
   end
 
@@ -113,7 +113,7 @@ class ReminderController < ApplicationController
     employee = Employee.find_by_employee_number(user.username)
     @reminder = Reminder.find(params[:id2])
     Reminder.update(@reminder.id, :is_deleted_by_recipient => true)
-    flash[:notice] = "Reminder deleted."
+    flash[:notice] = m('reminder.delete.success')
     redirect_to :action =>"index"
   end
 
@@ -127,10 +127,10 @@ class ReminderController < ApplicationController
       unless params[:reminder][:body] == "" or params[:recipients] == ""
         Reminder.create(:sender=>user.id, :recipient=>@sender.id, :subject=>params[:reminder][:subject],
           :body=>params[:reminder][:body], :is_read=>false, :is_deleted_by_sender=>false,:is_deleted_by_recipient=>false)
-        flash[:notice]="Your reply has been sent"
+        flash[:notice]="你的回复已经成功发送."
         redirect_to :controller=>"reminder", :action=>"view_reminder", :id2=>params[:id2]
       else
-        flash[:notice]="<b>ERROR:</b>Please enter both subject and body"
+        flash[:notice]="<b>错误:</b>请同时填写课目和内容."
         redirect_to :controller=>"reminder", :action=>"view_reminder",:id2=>params[:id2]
       end
     end
@@ -139,7 +139,7 @@ class ReminderController < ApplicationController
   def mark_unread
     @reminder = Reminder.find(params[:id2])
     Reminder.update(@reminder.id, :is_read => false)
-    flash[:notice] = "Reminder marked unread."
+    flash[:notice] = "提醒标记为未读."
     redirect_to :controller=>"reminder", :action=>"index"
   end
 
@@ -154,11 +154,11 @@ class ReminderController < ApplicationController
       Reminder.create(:sender=>params[:create_reminder][:from], :recipient=>params[:create_reminder][:to], :subject=>params[:create_reminder][:subject],
         :body=>params[:create_reminder][:message] , :is_read=>false, :is_deleted_by_sender=>false,:is_deleted_by_recipient=>false)
       render(:update) do |page|
-        page.replace_html 'error-msg', :text=> '<p class="flash-msg">Your message has been sent</p>'
+        page.replace_html 'error-msg', :text=> '<p class="flash-msg">你的消息已成功发送.</p>'
       end
     else
       render(:update) do |page|
-        page.replace_html 'error-msg', :text=> '<p class="flash-msg">Please enter message and subject.</p>'
+        page.replace_html 'error-msg', :text=> '<p class="flash-msg">请同时填写课目和内容.</p>'
       end
     end
   end

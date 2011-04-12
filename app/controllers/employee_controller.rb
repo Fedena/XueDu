@@ -8,7 +8,7 @@ class EmployeeController < ApplicationController
     @categories = EmployeeCategory.find(:all)
     @category = EmployeeCategory.new(params[:category])
     if request.post? and @category.save
-      flash[:notice] = "Employee category created"
+      flash[:notice] = m('employee_category.create.success')
       redirect_to :controller => "employee", :action => "add_category"
     end
   end
@@ -16,7 +16,7 @@ class EmployeeController < ApplicationController
   def edit_category
     @category = EmployeeCategory.find(params[:id])
     if request.post? and @category.update_attributes(params[:category])
-      flash[:notice] = "Employee category updated"
+      flash[:notice] = m('employee_category.update.success')
       redirect_to :action => "add_category"
     end
   end
@@ -27,10 +27,10 @@ class EmployeeController < ApplicationController
     if employees.empty? and category_position.empty?
       EmployeeCategory.find(params[:id]).destroy
       @categories = EmployeeCategory.find :all
-      flash[:notice]="Successfully deleted!"
+      flash[:notice] = m('employee_category.delete.success')
       redirect_to :action => "add_category"
     else
-      flash[:notice]="Unable to delete!"
+      flash[:notice] = m('employee_category.delete.denied')
       redirect_to :action => "add_category"
     end
   end
@@ -40,7 +40,7 @@ class EmployeeController < ApplicationController
     @categories = EmployeeCategory.find(:all,:order => "name asc")
     @position = EmployeePosition.new(params[:position])
     if request.post? and @position.save
-      flash[:notice] = "Employee position created"
+      flash[:notice] = m('employee_position.create.success')
       redirect_to :controller => "employee", :action => "add_position"
     end
   end
@@ -49,7 +49,7 @@ class EmployeeController < ApplicationController
     @categories = EmployeeCategory.find(:all)
     @position = EmployeePosition.find(params[:id])
     if request.post? and @position.update_attributes(params[:position])
-      flash[:notice] = "Employee position updated"
+      flash[:notice] = m('employee_position.update.success')
       redirect_to :action => "add_position"
     end
 
@@ -61,10 +61,10 @@ class EmployeeController < ApplicationController
     if employees.empty?
       EmployeePosition.find(params[:id]).destroy
       @positions = EmployeePosition.find :all
-      flash[:notice]="Successfully deleted!"
+      flash[:notice] = m('employee_position.delete.success')
       redirect_to :action => "add_position"
     else
-      flash[:notice]="Unable to delete!"
+      flash[:notice] = m('employee_position.delete.denied')
       redirect_to :action => "add_position"
     end
   end
@@ -73,7 +73,7 @@ class EmployeeController < ApplicationController
     @departments = EmployeeDepartment.find(:all)
     @department = EmployeeDepartment.new(params[:department])
     if request.post? and @department.save
-      flash[:notice] = "Employee department created"
+      flash[:notice] = m('employee_department.create.success')
       redirect_to :controller => "employee", :action => "add_department"
     end
   end
@@ -81,7 +81,7 @@ class EmployeeController < ApplicationController
   def edit_department
     @department = EmployeeDepartment.find(params[:id])
     if request.post? and @department.update_attributes(params[:department])
-      flash[:notice] = "Employee department updated"
+      flash[:notice] = m('employee_department.update.success')
       redirect_to :action => "add_department"
     end
   end
@@ -91,10 +91,10 @@ class EmployeeController < ApplicationController
     if employees.empty?
       EmployeeDepartment.find(params[:id]).destroy
       @departments = EmployeeDepartment.find :all
-      flash[:notice]="Successfully deleted!"
+      flash[:notice] = m('employee_department.delete.success')
       redirect_to :action => "add_department"
     else
-      flash[:notice]="Unable to delete!"
+      flash[:notice] = m('employee_department.delete.denied')
       redirect_to :action => "add_department"
     end
   end
@@ -103,7 +103,7 @@ class EmployeeController < ApplicationController
     @grades = EmployeeGrade.find(:all)
     @grade = EmployeeGrade.new(params[:grade])
     if request.post? and @grade.save
-      flash[:notice] = "Employee grade created"
+      flash[:notice] = m('employee_grade.create.success')
       redirect_to :controller => "employee", :action => "add_grade"
     end
   end
@@ -111,7 +111,7 @@ class EmployeeController < ApplicationController
   def edit_grade
     @grade = EmployeeGrade.find(params[:id])
     if request.post? and @grade.update_attributes(params[:grade])
-      flash[:notice] = "Employee grade updated"
+      flash[:notice] = m('employee_grade.update.success')
       redirect_to :action => "add_grade"
     end
   end
@@ -121,10 +121,10 @@ class EmployeeController < ApplicationController
     if employees.empty?
       EmployeeGrade.find(params[:id]).destroy
       @grades = EmployeeGrade.find :all
-      flash[:notice]="Successfully deleted!"
+      flash[:notice] = m('employee_grade.delete.success')
       redirect_to :action => "add_grade"
     else
-      flash[:notice]="Unable to delete!"
+      flash[:notice] = m('employee_grade.delete.denied')
       redirect_to :action => "add_grade"
     end
   end
@@ -133,7 +133,7 @@ class EmployeeController < ApplicationController
     @bank_details = BankField.find(:all)
     @bank_field = BankField.new(params[:bank_field])
     if request.post? and @bank_field.save
-      flash[:notice] = "Bank field created"
+      flash[:notice] = m('bank_field.create.success')
       redirect_to :controller => "employee", :action => "add_bank_details"
     end
   end
@@ -141,7 +141,7 @@ class EmployeeController < ApplicationController
   def edit_bank_details
     @bank_details = BankField.find(params[:id])
     if request.post? and @bank_details.update_attributes(params[:bank_details])
-      flash[:notice] = "Bank details updated"
+      flash[:notice] = m('bank_field.update.success')
       redirect_to :action => "add_bank_details"
     end
   end
@@ -150,10 +150,10 @@ class EmployeeController < ApplicationController
     if employees.empty?
       BankField.find(params[:id]).destroy
       @bank_details = BankField.find(:all)
-      flash[:notice]="Successfully deleted!"
+      flash[:notice] = m('bank_field.delete.success')
       redirect_to :action => "add_bank_details"
     else
-      flash[:notice]="Unable to delete!"
+      flash[:notice] = m('bank_field.delete.denied')
       redirect_to :action => "add_bank_details"
     end
   end
@@ -162,7 +162,7 @@ class EmployeeController < ApplicationController
     @additional_details = AdditionalField.find(:all)
     @additional_field = AdditionalField.new(params[:additional_field])
     if request.post? and @additional_field.save
-      flash[:notice] = "Additional field created"
+      flash[:notice] = m('additional_field.create.success')
       redirect_to :controller => "employee", :action => "add_additional_details"
     end
   end
@@ -170,7 +170,7 @@ class EmployeeController < ApplicationController
   def edit_additional_details
     @additional_details = AdditionalField.find(params[:id])
     if request.post? and @additional_details.update_attributes(params[:additional_details])
-      flash[:notice] = "Additional details updated"
+      flash[:notice] = m('additional_field.update.success')
       redirect_to :action => "add_additional_details"
     end
   end
@@ -179,10 +179,10 @@ class EmployeeController < ApplicationController
     if employees.empty?
       AdditionalField.find(params[:id]).destroy
       @additional_details = AdditionalField.find(:all)
-      flash[:notice]="Successfully deleted!"
+      flash[:notice] = m('additional_field.delete.success')
       redirect_to :action => "add_additional_details"
     else
-      flash[:notice]="Unable to delete!"
+      flash[:notice] = m('additional_field.delete.denied')
       redirect_to :action => "add_additional_details"
     end
   end
@@ -228,7 +228,7 @@ class EmployeeController < ApplicationController
         @user.email = "noreply" + @employee.employee_number.to_s + "@fedena.com"
         @user.save
         
-        flash[:notice] = "Employee #{@employee.first_name} record saved"
+        flash[:notice] = "员工#{@employee.first_name}记录保存成功."
         redirect_to :controller =>"employee" ,:action => "admission2", :id => @employee.id
       end
     end
@@ -261,7 +261,7 @@ class EmployeeController < ApplicationController
         Employee.update(@employee.id, :status => false)
       end
 
-      flash[:notice] = "Employee #{@employee.first_name} general information updated"
+      flash[:notice] = "员工#{@employee.first_name}基本信息更新成功."
       redirect_to :controller =>"employee" ,:action => "profile", :id => @employee.id
     end
   end
@@ -270,7 +270,7 @@ class EmployeeController < ApplicationController
     @nationalities = Country.all
     @employee = Employee.find(params[:id])
     if request.post? and @employee.update_attributes(params[:employee])
-      flash[:notice] = "Employee #{@employee.first_name} personal information updated"
+      flash[:notice] = "员工#{@employee.first_name}个人信息更新成功."
       redirect_to :controller =>"employee" ,:action => "profile", :id => @employee.id
     end
   end
@@ -286,7 +286,7 @@ class EmployeeController < ApplicationController
         sms = SmsManager.new(message,recipient)
         sms.send_sms
       end
-      flash[:notice] = "address and contact details saved for #{ @employee.first_name}"
+      flash[:notice] = "#{ @employee.first_name}地址和联系方式保存成功."
       redirect_to :action => "admission3", :id => @employee.id
     end
   end  
@@ -295,7 +295,7 @@ class EmployeeController < ApplicationController
     @employee = Employee.find(params[:id])
     @countries = Country.find(:all)
     if request.post? and @employee.update_attributes(params[:employee])
-      flash[:notice] = "Employee address  details saved for #{ @employee.first_name}"
+      flash[:notice] = "员工的详细地址保存为#{ @employee.first_name}."
       redirect_to :action => "profile", :id => @employee.id
     end
   end
@@ -303,7 +303,7 @@ class EmployeeController < ApplicationController
   def edit_contact
     @employee = Employee.find(params[:id])
     if request.post? and @employee.update_attributes(params[:employee])
-      flash[:notice] = "Employee contact details saved for #{ @employee.first_name}"
+      flash[:notice] = "员工的联系方式保存为#{ @employee.first_name}."
       redirect_to :action => "profile", :id => @employee.id
     end
   end
@@ -320,7 +320,7 @@ class EmployeeController < ApplicationController
         EmployeeBankDetail.create(:employee_id => params[:id],
           :bank_field_id => k,:bank_info => v['bank_info'])
       end
-      flash[:notice] = "Bank details saved for #{@employee.first_name}"
+      flash[:notice] = "银行信息保存为#{@employee.first_name}."
       redirect_to :action => "admission3_1", :id => @employee.id
     end
   end
@@ -338,7 +338,7 @@ class EmployeeController < ApplicationController
           EmployeeBankDetail.create(:employee_id=>@employee.id,:bank_field_id=>k,:bank_info=>v['bank_info'])
         end
       end
-      flash[:notice] = "Employee #{@employee.first_name} bank details updated"
+      flash[:notice] = "员工#{@employee.first_name}银行信息更新成功."
       redirect_to :action => "profile", :id => @employee.id
     end
   end
@@ -354,7 +354,7 @@ class EmployeeController < ApplicationController
         EmployeeAdditionalDetail.create(:employee_id => params[:id],
           :additional_field_id => k,:additional_info => v['additional_info'])
       end
-      flash[:notice] = "Bank details saved for #{@employee.first_name}"
+      flash[:notice] = "银行信息保存为#{@employee.first_name}."
       redirect_to :action => "edit_privilege", :id => @employee.employee_number
     end
   end
@@ -384,7 +384,7 @@ class EmployeeController < ApplicationController
           EmployeeAdditionalDetail.create(:employee_id=>@employee.id,:additional_field_id=>k,:additional_info=>v['additional_info'])
         end
       end
-      flash[:notice] = "Employee #{@employee.first_name} additional details updated"
+      flash[:notice] = "员工#{@employee.first_name}附件信息更新成功."
       redirect_to :action => "profile", :id => @employee.id
     end
   end
@@ -397,7 +397,7 @@ class EmployeeController < ApplicationController
     if request.post?
       @employee = Employee.find(params[:id])
       Employee.update(@employee, :reporting_manager_id => params[:employee][:reporting_manager_id])
-      flash[:notice]="employee reporting manager saved"
+      flash[:notice]="员工报告管理保存成功."
       redirect_to :controller => "payroll", :action => "manage_payroll", :id=>@employee.id
     end
   
@@ -419,7 +419,7 @@ class EmployeeController < ApplicationController
     if request.post?
       @employee = Employee.find(params[:id])
       Employee.update(@employee, :reporting_manager_id => params[:employee][:reporting_manager_id])
-      flash[:notice]="Reporting manager successfully changed"
+      flash[:notice]="报告管理更新成功."
       redirect_to :action => "profile", :id=>@employee.id
     end
   end
@@ -658,7 +658,7 @@ class EmployeeController < ApplicationController
         individual_payslip_category.each do |c|
           IndividualPayslipCategory.update(c.id, :salary_date=>start_date)
         end
-        flash[:notice] = "#{@employee.first_name} salary slip generated for #{params[:salary_date]}"
+        flash[:notice] = "#{@employee.first_name}的工资单生成于#{params[:salary_date]}."
         redirect_to :controller => "employee", :action => "profile", :id=> @employee.id
       else #else for if payslip_exists == []
         individual_payslips_generated = IndividualPayslipCategory.find_all_by_employee_id_and_salary_date(@employee.id,nil)
@@ -667,7 +667,7 @@ class EmployeeController < ApplicationController
             i.delete
           end
         end
-        flash[:notice] = "<b>ERROR:</b>#{@employee.first_name} salary slip  already generated for #{params[:salary_date]}"
+        flash[:notice] = "<b>错误:</b>#{@employee.first_name}的工资单已经生成于#{params[:salary_date]}."
         redirect_to :controller => "employee", :action => "profile", :id=> @employee.id
       end
     end
@@ -744,7 +744,7 @@ class EmployeeController < ApplicationController
     @monthly_payslip.each do |m|
       m.destroy
     end
-    flash[:notice]= "Payslip deleted for #{params[:id2]}"
+    flash[:notice]= "删除工资单中为#{params[:id2]}的记录."
     redirect_to :controller=>"employee", :action=>"profile", :id=>params[:id]
   end
 
@@ -962,7 +962,7 @@ class EmployeeController < ApplicationController
       else
         ApplyLeave.update(@leave_apply, :is_half_day=> false)
       end
-      flash[:notice]="Leave application created"
+      flash[:notice]="离职申请成功."
       redirect_to :controller => "employee", :action=> "leave_management", :id=>@employee.id
     end
   end
@@ -1347,7 +1347,7 @@ class EmployeeController < ApplicationController
   def change_to_former
     @employee = Employee.find(params[:id])
     if request.post?
-      flash[:notice]="Successfully deleted employee!"
+      flash[:notice]=m('employee.delete.success')
       @employee.archive_employee(params[:remove][:status_description])
       redirect_to :action => "hr"
     end
@@ -1357,7 +1357,7 @@ class EmployeeController < ApplicationController
     employee = Employee.find(params[:id])
     user = User.destroy_all(:username => employee.employee_number) unless user.nil?
     Employee.destroy(params[:id])
-    flash[:notice] = "All records have been deleted for employee with employee no. #{employee.employee_number}."
+    flash[:notice] = "员工号为#{employee.employee_number}的所有记录已被删除."
     redirect_to :controller => 'user', :action => 'dashboard'
   end
 
@@ -1412,7 +1412,7 @@ class EmployeeController < ApplicationController
     dates.each do |d|
       d.approve(current_user.id)
     end
-    flash[:notice] = 'Payslip has been approved'
+    flash[:notice] = '工资单是合法的.'
     redirect_to :action => "hr"
 
   end

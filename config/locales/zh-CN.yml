@@ -45,6 +45,7 @@ zh-CN:
   Manage_Batches: "管理期次"
   Manage_active_batches: "管理当前可用期次"
   Active_batches: "当前期次"
+  Active_classrooms: "关联的教室"
 
   Batch: "期次"
   New_batch: "新增期次"
@@ -54,6 +55,8 @@ zh-CN:
   Electives: "选修"
   New_electives: "新增选修课"
   Show_electives: "查看选修课"
+
+  Exam_group: "分组考试"
 
   Elective_group: "选修组"
   Assign_all: "指定所有"
@@ -116,6 +119,7 @@ zh-CN:
   Select_a_dep: "选择一个部门"
   Grading_system: "记分等级"
   Batch_transfers: "期次转移"
+  Select_a_compuse: "选择一个校区"
   login:
     Username: "用户名"
     Password: "密  码"
@@ -182,6 +186,27 @@ zh-CN:
       student_category: "学生分类"
       elective_group: "选修组"
       configuration: "设置"
+      user: "用户"
+      additional_exam: "额外考试"
+      additional_exam_group: "额外考试组"
+      additional_exam_score: "额外考试分数"
+      archived_student: "学生存档"
+      employee: "员工"
+      employee_attendance: "员工出勤"
+      employee_category: "员工类别"
+      employee_position: "员工职位"
+      employee_department: "员工部门"
+      employee_grade: "员工级别"
+      bank_field: "银行领域"
+      additional_field: "其他领域"
+      event: "活动"
+      exam: "考试"
+      exam_group: "分组考试"
+      exam_score: "考试分数"
+      new: "新闻"
+      payroll_category: "薪资分类"
+      reminder: "提醒"
+      timetable: "时间表"
 
     errors:
       template: # ~ 2.3.5 backward compatible
@@ -231,7 +256,16 @@ zh-CN:
       submit: "储存{{model}}"
 
   msg:
+    no_right: "对不起,你没有权限访问此页面."
+    no_view: "你没有权限查看这条消息."
+    denied: "访问被拒绝!"
     must_fill: "请填写所有的必填字段."
+    transfer: "转移学生成功."
+    graduation: "选择毕业学生成功."
+    invalid_param: "无效的参数."
+    approve: "工资单已获批准."
+    paid: "费用已支付."
+    continue: "选择一个期次并继续."
     create:
       success: "新增{{model}}成功."
       failure: "新增{{model}}失败."
@@ -245,6 +279,7 @@ zh-CN:
     delete:
       success: "删除{{model}}成功."
       failure: "删除{{model}}失败."
+      denied: "不能删除!"
       unable: "<p>不能删除.请先删除存在的期次和学生信息.</p>"
       school_unable: "<p>不能删除. 请先删除已存在的教室.</p>"
     course:
@@ -268,4 +303,29 @@ zh-CN:
     configuration:
       invalid: "无效的延伸.图片必须为.JPG格式."
       too_large: "文件太大.文件大小不大于1MB."
+    user:
+      success: "密码重置成功.使用新的密码登录."
+      failure: "<p>密码确认失败.请重新输入.</p>"
+      update: "密码已经更新成功."
+      password_change: "密码修改成功."
+      old_failure: "<p>原密码输入错误.请输入有效的密码.</p>"
+      not_blank: "<p>密码不能为空!</p>"
+      profile: "找不到用户简介."
+      reset_time: "重置次数已过期."
+      invalid: "无效的重置链接."
+      invalid_link: "你跟随了无效的链接.请重试."
+      role_update: "角色更新成功."
+    employee:
+      leave_tpye: "员工离职类型保存成功."
+      update: "离职类型更新成功."
+      register: "出勤登记成功."
+      success: "离职申请成功."
+      delete: "删除离职申请."
+    event:
+      create: "成功为选中的课程创建活动."
+      depart: "成功为选中的部门创建活动."
+      cancel: "创建的活动已取消."
+    timetable:
+      weekdays: "你已经设置平日."
+      publish: "时间表已公布."
       

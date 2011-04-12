@@ -62,7 +62,7 @@ class EventController < ApplicationController
       end
     end
 
-    flash[:notice] = "event created for selected courses"
+    flash[:notice] = t('msg.event.create')
     redirect_to :action=>"show", :id => event.id
   end
 
@@ -99,7 +99,7 @@ class EventController < ApplicationController
         end
       end
     end
-    flash[:notice] = "event created for selected departments"
+    flash[:notice] = t('msg.event.depart')
     redirect_to :action=>"show", :id=>event.id
   end
 
@@ -217,7 +217,7 @@ class EventController < ApplicationController
     
     batch_event.each { |x| x.destroy } unless batch_event.nil?
     dept_event.each { |x| x.destroy } unless dept_event.nil?
-    flash[:notice] = 'Event creation cancelled'
+    flash[:notice] = t('msg.event.cancel')
     redirect_to :action=>"index"
   end
 

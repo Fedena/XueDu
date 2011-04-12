@@ -47,7 +47,7 @@ class AdditionalExamController < ApplicationController
 
     else
       render(:update) do |page|
-        page.replace_html 'flash', :text=>'<div class="errorExplanation"><p>Exam name can\'t be blank</p></div>'
+        page.replace_html 'flash', :text=>'<div class="errorExplanation"><p>考试名称不能为空.</p></div>'
       end
     end
   end

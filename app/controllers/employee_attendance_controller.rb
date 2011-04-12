@@ -11,7 +11,7 @@ class EmployeeAttendanceController < ApplicationController
     @leave_types = EmployeeLeaveType.find(:all, :order => "name ASC")
     @leave_type = EmployeeLeaveType.new(params[:leave_type])
     if request.post? and @leave_type.save
-      flash[:notice] = "Employee leave type saved"
+      flash[:notice] = t('msg.employee.leave_type')
       redirect_to :action => "add_leave_types"
     end
   end
@@ -19,7 +19,7 @@ class EmployeeAttendanceController < ApplicationController
   def edit_leave_types
     @leave_type = EmployeeLeaveType.find(params[:id])
     if request.post? and @leave_type.update_attributes(params[:leave_type])
-      flash[:notice] = "Leave type updated"
+      flash[:notice] = t('msg.employee.update')
       redirect_to :action => "add_leave_types"
     end
   end
@@ -32,7 +32,7 @@ class EmployeeAttendanceController < ApplicationController
           @employee_attendance = EmployeeAttendance.create(:attendance_date => params[:date],
             :employees_id => emp, :employee_leave_types_id=> att) unless att == ""
         end
-        flash[:notice]="attendance registered"
+        flash[:notice]= t('msg.employee.register')
         redirect_to :controller=>"employee_attendance", :action => "register"
       end
     end
@@ -100,7 +100,7 @@ class EmployeeAttendanceController < ApplicationController
       else
         ApplyLeave.update(@leave_apply, :is_half_day=> false)
       end
-      flash[:notice]="Leave application created"
+      flash[:notice]= t('msg.employee.success')
       redirect_to :controller => "employee_attendance", :action=> "leaves", :id=>@employee.id
     end
   end
@@ -145,7 +145,7 @@ class EmployeeAttendanceController < ApplicationController
       end
     end
     
-    flash[:notice]="Leave approved for #{@applied_employee.first_name} from #{@applied_leave.start_date} to #{@applied_leave.end_date}"
+    flash[:notice]="批准#{@applied_employee.first_name}从#{@applied_leave.start_date}到#{@applied_leave.end_date}离职"
     redirect_to :controller=>"employee_attendance", :action=>"leaves", :id=>@manager
   end
 
@@ -154,7 +154,7 @@ class EmployeeAttendanceController < ApplicationController
     @applied_employee = Employee.find(@applied_leave.employee_id)
     @manager = @applied_employee.reporting_manager_id
     ApplyLeave.update(@applied_leave, :viewed_by_manager => true, :manager_remark =>params[:manager_remark])
-    flash[:notice]="Leave denied for #{@applied_employee.first_name} from #{@applied_leave.start_date} to #{@applied_leave.end_date}"
+    flash[:notice]="拒绝#{@applied_employee.first_name}从#{@applied_leave.start_date}到#{@applied_leave.end_date}离职"
     redirect_to :action=>"leaves", :id=>@manager
   end
 
@@ -197,7 +197,7 @@ class EmployeeAttendanceController < ApplicationController
     @applied_leave = ApplyLeave.find(params[:id])
     @employee = Employee.find(@applied_leave.employee_id)
     ApplyLeave.destroy(params[:id])
-    flash[:notice] = "Leave application deleted"
+    flash[:notice] = t('msg.delete')
     redirect_to :action=>"leaves", :id=>@employee.id
   end
 

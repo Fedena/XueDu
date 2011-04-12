@@ -13,7 +13,7 @@ class TimetableController < ApplicationController
       holiday = []
       @holiday = Weekday.find_all_by_batch_id(@batch.id)
       @holiday = Weekday.default if @holiday.empty?
-      flash[:notice] = 'You have set the weekdays!' if @holiday.empty?
+      flash[:notice] = t('msg.timetable.weekdays') if @holiday.empty?
       @holiday.each do |h|
         holiday.push h.weekday
       end
@@ -58,11 +58,11 @@ class TimetableController < ApplicationController
         end
           
         if set == 0
-          flash[:notice] = 'Timetable has already been published'
+          flash[:notice] = t('msg.timetable.publish')
         elsif set == 1
-          flash[:notice] = 'Timetable updated'
+          flash[:notice] = m('timetable.update.success')
         else
-          flash[:notice] = 'Timetable created successfully'
+          flash[:notice] = m('timetable.create.success')
         end
       end
     
@@ -170,7 +170,7 @@ class TimetableController < ApplicationController
 
         redirect_to :action => "edit", :id => @batch.id
       else
-        flash[:notice]="Select a batch to continue"
+        flash[:notice]=t('msg.continue')
         redirect_to :action => "select_class"
       end
     end
@@ -288,7 +288,7 @@ class TimetableController < ApplicationController
         end
         redirect_to :action => "edit2", :id => @batch.id
       else
-        flash[:notice]="Select a batch to continue"
+        flash[:notice]=t('msg.continue')
         redirect_to :action => "select_class2"
       end
     end

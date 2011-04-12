@@ -10,7 +10,7 @@ class NewsController < ApplicationController
       if sms_setting.application_sms_active
         students = Student.find(:all,:select=>'phone2',:conditions=>'is_sms_enabled = true')
       end
-      flash[:notice] = 'News added!'
+      flash[:notice] = m('new.create.success')
       redirect_to :controller => 'news', :action => 'view', :id => @news.id
     end
   end
@@ -27,7 +27,7 @@ class NewsController < ApplicationController
 
   def delete
     @news = News.find(params[:id]).destroy
-    flash[:notice] = 'News item deleted succefully!'
+    flash[:notice] = m('new.delete.success')
     redirect_to :controller => 'news', :action => 'index'
   end
 
@@ -39,7 +39,7 @@ class NewsController < ApplicationController
   def edit
     @news = News.find(params[:id])
     if request.post? and @news.update_attributes(params[:news])
-      flash[:notice] = 'News updated!'
+      flash[:notice] = m('new.update.success')
       redirect_to :controller => 'news', :action => 'view', :id => @news.id
     end
   end

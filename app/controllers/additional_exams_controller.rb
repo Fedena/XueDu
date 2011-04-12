@@ -47,7 +47,7 @@ class AdditionalExamsController < ApplicationController
         @additional_exam_score.update_attributes(details)
       end
     end
-    flash[:notice] = 'Additional exam scores updated.'
+    flash[:notice] = m('additional_exam_score.update.success')
     redirect_to [@additional_exam_group, @additional_exam]
   end
 
@@ -55,7 +55,7 @@ class AdditionalExamsController < ApplicationController
     @additional_exam = AdditionalExam.new(params[:additional_exam])
     @additional_exam.additional_exam_group_id = @additional_exam_group.id
     if @additional_exam.save
-      flash[:notice] = "New exam created successfully."
+      flash[:notice] = m('additional_exam.create.success')
       redirect_to [@batch, @additional_exam_group]
     else
       @subjects = @batch.subjects
@@ -68,7 +68,7 @@ class AdditionalExamsController < ApplicationController
     @additional_exam = AdditionalExam.find params[:id], :include => :additional_exam_group
 
     if @additional_exam.update_attributes(params[:exam])
-      flash[:notice] = 'Updated additional exam details successfully.'
+      flash[:notice] = m('additional_exam.update.success')
       redirect_to [@additional_exam_group, @additional_exam]
     else
       render 'edit'

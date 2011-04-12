@@ -15,7 +15,7 @@ class FinanceController < ApplicationController
   def donation
     @donation = FinanceDonation.new(params[:donation])
     if request.post? and @donation.save
-      flash[:notice] = 'Donation accepted.'
+      flash[:notice] = '接受捐助.'
       redirect_to :action => 'donation_receipt', :id => @donation.id
     end
   end
@@ -41,10 +41,10 @@ class FinanceController < ApplicationController
     @expense = FinanceTransaction.new(params[:transaction])
     @categories = FinanceTransactionCategory.expense_categories
     if @categories.empty?
-      flash[:notice] = "Please create category for expense!"
+      flash[:notice] = "请为费用创建类别."
     end
     if request.post? and @expense.save
-      flash[:notice] = "Expense has been added to the accounts."
+      flash[:notice] = "费用已被添加到账户."
     end
   end
 
@@ -52,7 +52,7 @@ class FinanceController < ApplicationController
     @transaction = FinanceTransaction.find(params[:id])
     @categories = FinanceTransactionCategory.all(:conditions => {:is_income => false} )
     if request.post? and @transaction.update_attributes(params[:transaction])
-      flash[:notice] = "The entry has been edited."
+      flash[:notice] = "条目编辑成功"
     end
   end
   def income_create
@@ -60,10 +60,10 @@ class FinanceController < ApplicationController
     @income = FinanceTransaction.new(params[:transaction])
     @categories = FinanceTransactionCategory.income_categories
     if @categories.empty?
-      flash[:notice] = "Please create category for income!"
+      flash[:notice] = "请为收入创建类别."
     end
     if request.post? and @income.save
-      flash[:notice] = "Income has been added to the accounts."
+      flash[:notice] = "收入已被添加到账号."
     end
   end
 
@@ -75,7 +75,7 @@ class FinanceController < ApplicationController
     @transaction = FinanceTransaction.find(params[:id])
     @categories = FinanceTransactionCategory.all(:conditions => {:is_income => true} )
     if request.post? and @transaction.update_attributes(params[:transaction])
-      flash[:notice] = "The entry has been edited."
+      flash[:notice] = "条目编辑成功."
     end
   end
 
@@ -278,7 +278,7 @@ class FinanceController < ApplicationController
     dates.each do |d|
       d.approve(current_user.id)
     end
-    flash[:notice] = 'Payslip has been approved'
+    flash[:notice] = t('msg.approve')
     redirect_to :action => "index"
     
   end
@@ -289,7 +289,7 @@ class FinanceController < ApplicationController
     dates.each do |d|
       d.approve(current_user.id)
     end
-    flash[:notice] = 'Payslip has been approved'
+    flash[:notice] = t('msg.approve')
     redirect_to :action => "index"
   end
 
@@ -611,10 +611,10 @@ class FinanceController < ApplicationController
         end
         Event.create(:title=> "Fees Due", :description =>@additional_category.name, :start_date => @due_date, :end_date => @due_date, :is_due => true)
       end
-      flash[:notice] = "Category created, please add Particulars for the category"
+      flash[:notice] = "类别创建成功,请添加该类别的资料."
       redirect_to(:action => "add_particulars" ,:id => @collection_date.id)
     else
-      flash[:notice] = 'Fields with * cannot be empty'
+      flash[:notice] = '输入框标有 * 的为必填项.'
       redirect_to :action => "additional_fees_create_form"
     end
   end
@@ -799,7 +799,7 @@ class FinanceController < ApplicationController
   
   def fee_collection_update
     @finance_fee_collection = FinanceFeeCollection.find params[:id]
-    flash[:notice]="Fee Collection updated successfully" if @finance_fee_collection.update_attributes(params[:fee_collection]) if request.post?
+    flash[:notice]="更新收费成功." if @finance_fee_collection.update_attributes(params[:fee_collection]) if request.post?
     @finance_fee_collections = FinanceFeeCollection.all(:conditions => ["is_deleted = '#{false}' and batch_id = '#{@finance_fee_collection.batch_id}'"])
   end
 
@@ -1004,7 +1004,7 @@ class FinanceController < ApplicationController
       transaction.save
       @financefee.update_attribute(:transaction_id, transaction.id)
     end
-    flash[:notice] = 'Fees Paid'
+    flash[:notice] = t('msg.paid')
     redirect_to  :action => "fees_student_search"
   end
 
@@ -1104,7 +1104,7 @@ class FinanceController < ApplicationController
       transaction.save
       @financefee.update_attribute(:transaction_id, transaction.id)
 
-      flash[:notice] = "Fees Paid"
+      flash[:notice] = t('msg.paid')
       redirect_to  :action => "fees_defaulters"
     
     end

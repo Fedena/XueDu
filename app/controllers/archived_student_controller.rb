@@ -15,7 +15,7 @@ class ArchivedStudentController < ApplicationController
   def destroy
     archived_student = ArchivedStudent.find(params[:id])
     ArchivedStudent.destroy(params[:id])
-    flash[:notice] = "All records have been deleted for student with admission no. #{archived_student.admission_no}."
+    flash[:notice] = "学生学号为#{archived_student.admission_no}的所有记录已删除."
     redirect_to :controller => 'user', :action => 'dashboard'
   end
 

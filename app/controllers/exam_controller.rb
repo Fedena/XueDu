@@ -37,7 +37,7 @@ class ExamController < ApplicationController
   
     else
       render(:update) do |page|
-        page.replace_html 'flash', :text=>'<div class="errorExplanation"><p>Exam name can\'t be blank</p></div>'
+        page.replace_html 'flash', :text=>'<div class="errorExplanation"><p>考试名称不能为空.</p></div>'
       end
     end
   end
@@ -124,7 +124,7 @@ class ExamController < ApplicationController
       else
         GroupedExam.delete_all(:batch_id=>@batch.id)
       end
-        flash[:notice]="Selected exams grouped successfully."
+        flash[:notice]="选择分组考试成功."
     end
   end
 
@@ -146,12 +146,12 @@ class ExamController < ApplicationController
   def generated_report
     if params[:student].nil?
       if params[:exam_report].nil? or params[:exam_report][:exam_group_id].empty?
-        flash[:notice] = "Select a batch and exam to continue."
+        flash[:notice] = "选择一个期次并继续考试."
         redirect_to :action=>'exam_wise_report' and return
       end
     else
       if params[:exam_group].nil?
-        flash[:notice] = "Invalid parameters."
+        flash[:notice] = t('msg.invalid_param')
         redirect_to :action=>'exam_wise_report' and return
       end
     end
@@ -235,7 +235,7 @@ class ExamController < ApplicationController
       @students = @batch.students
       @exam_groups = ExamGroup.find(:all,:conditions=>{:batch_id=>@batch.id})
     else
-      flash[:notice] = "select a subject to continue"
+      flash[:notice] = "选择一个课目并继续."
       redirect_to :action=>'subject_wise_report'
     end
   end
@@ -271,12 +271,12 @@ class ExamController < ApplicationController
   def generated_report4
     if params[:student].nil?
       if params[:exam_report].nil? or params[:exam_report][:batch_id].empty?
-        flash[:notice] = "Select a batch to continue"
+        flash[:notice] = "选择一个期次并继续."
         redirect_to :action=>'grouped_exam_report' and return
       end
     else
       if params[:type].nil?
-        flash[:notice] = "Invalid parameters."
+        flash[:notice] = t('msg.invalid_param')
         redirect_to :action=>'grouped_exam_report' and return
       end
     end
