@@ -37,6 +37,13 @@ module ApplicationHelper
     Configuration.find_by_config_key("CurrencyType").config_value
   end
   
+  #获取I18n实体属性名称
+  #since 2011-04-13
+  #author wangqun
+  def tt(path)
+    t("activerecord.attributes.#{path}")
+  end
+
   #教室下拉框(用于subjects/new)
   #author by wangqun
   #since 2011-04-02

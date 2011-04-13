@@ -1,7 +1,7 @@
 <div id="content-header">
   <img src="/images/admission/admission_page_logo.jpg" />
-  <h1>Admission</h1>
-  <h3>Add guardian details</h3>
+  <h1><%= t 'student.Admission' %></h1>
+  <h3><%= t 'guardian.add_guardian_detail' %></h3>
     <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -17,10 +17,8 @@
 
   <div id="admission1_form">
 
-
-
     <div class="label-field-pair">
-      <label for="parent_detail_student_id">Student Admission no.</label>
+      <%= s.label :admission_no %>
       <div class="text_display"><%= @student.admission_no %></div>
       <%= s.hidden_field :ward_id, :value => @student.id %>
     </div>

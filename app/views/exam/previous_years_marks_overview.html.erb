@@ -1,7 +1,7 @@
 <div id="content-header">
   <img src="/images/student_details/student_details_logo.jpg" />
-  <h1>Student</h1>
-  <h3>Previous marks overview</h3>
+  <h1><%= t 'Students' %></h1>
+  <h3><%= t 'Previous_overview' %></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -58,18 +58,18 @@
           <div class="month">
             <% exam = ExamScore.new() %>
             <% @aggr =  exam.batch_wise_aggregate(@student,b)  %>
-            <%= b.name %> | Aggregate : <%="%.2f" %@aggr.to_f unless @aggr== 'nil' or @aggr.nil? %>
+            <%= b.name %> | 合计 : <%="%.2f" %@aggr.to_f unless @aggr== 'nil' or @aggr.nil? %>
           </div>
           <div class="extender"></div>
         </div>
       </div>
       <table id="listing" width="100%">
         <tr class="tr-head">
-          <td>Subject</td>
+          <td><%= t 'Subjects' %></td>
           <% @exam_groups.each do |exam_group| %>
             <td><%= exam_group.name %></td>
           <% end %>
-          <td>Total</td>
+          <td><%= t 'Total' %></td>
         </tr>
 
         <% @subjects.each do |subject| %>
@@ -106,7 +106,7 @@
 
         <% end %>
         <tr class="tr-head">
-          <td>Total</td>
+          <td><%= t 'Total' %></td>
           <% @max_total = 0 %>
           <% @marks_total = 0 %>
 

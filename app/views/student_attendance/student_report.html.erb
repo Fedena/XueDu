@@ -1,7 +1,7 @@
 <div id="content-header">
   <img src="/images/attendence/attendence.png" />
-  <h1>Attendance</h1>
-  <h3>Student Report</h3>
+  <h1><%= t 'Attendance' %></h1>
+  <h3><%= t 'Student_report' %></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -11,12 +11,12 @@
   <div id="box">
     <% remote_form_for :advance_search do |f| %>
       <div class="label-field-pair">
-        <label for="student">Student name</label>
+        <%= f.label :student_name%>
         <div class="text-input-bg">
           <%= f.text_field :student_name, :value => @student.full_name, :disabled=> true %></div>
       </div>
       <div class="label-field-pair">
-        <label for="student">Admission no.</label>
+        <%= f.label :admission_no%>
         <div class="text-input-bg">
           <%= f.text_field :student_id, :value => @student.admission_no, :disabled=> true  %></div>
       </div>

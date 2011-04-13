@@ -1,7 +1,7 @@
 <div id="content-header">
   <img src="/images/examination/show_exam.png" alt="Exam" />
-  <h1>Exams</h1>
-  <h3>Acadamic report</h3>
+  <h1><%= t 'Exams' %></h1>
+  <h3><%= t 'Academic_report' %></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -15,10 +15,10 @@
 
 <table id="listing" width="100%">
   <tr class="tr-head">
-    <td>Exam</td>
-    <td>Marks</td>
-    <td>Max Marks</td>
-    <td>Grade</td>
+    <td><%= t 'Exams' %></td>
+    <td><%= t 'Marks' %></td>
+    <td><%= t 'Max_marks' %></td>
+    <td><%= t 'Grade' %></td>
   </tr>
   <% @exam_groups.each do |exam_group| %>
   <tr class="tr-<%= cycle('odd','even') %>">

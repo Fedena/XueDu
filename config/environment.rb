@@ -7,7 +7,7 @@ Rails::Initializer.run do |config|
   config.time_zone = 'UTC'
  
   
-  config.i18n.default_locale = "en-GB"
+  config.i18n.default_locale = "zh-CN"
  
   # config/application.rb
   config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]

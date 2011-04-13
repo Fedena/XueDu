@@ -6,8 +6,6 @@ class ApplicationController < ActionController::Base
   before_filter { |c| Authorization.current_user = c.current_user }
   before_filter :message_user
   before_filter :set_user_language
-  
-
 
   def initialize
     @title = 'Xuedu'
@@ -144,7 +142,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
-   def set_user_language
-     I18n.locale = 'zh-CN'
+  def set_user_language
+    I18n.locale = 'zh-CN'
   end
 end

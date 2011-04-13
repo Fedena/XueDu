@@ -1,14 +1,14 @@
 <div id="content-header">
   <img src="/images/examination/show_exam.png" alt="Exam" />
-  <h1>Exams</h1>
-  <h3>Grouped exam Reports</h3>
+  <h1><%= t 'Exams' %></h1>
+  <h3><%= t 'Grouped_report' %></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
 </div>
 <div id="inner-tab-menu">
   <ul>
-   <li><%= link_to "PDF Report", {:controller => "exam", :action => "generated_report4_pdf", :type => @type, :student => @student.id},:target => '_blank' %></li>
+   <li><%= link_to "PDF报告", {:controller => "exam", :action => "generated_report4_pdf", :type => @type, :student => @student.id},:target => '_blank' %></li>
   </ul>
 </div>
 <div id="page-yield">
@@ -38,11 +38,11 @@
 
     <table id="listing" width="100%">
       <tr class="tr-head">
-        <td>Subject</td>
+        <td><%= t 'Subjects' %></td>
         <% @exam_groups.each do |exam_group| %>
           <td><%= exam_group.name %></td>
         <% end %>
-        <td>Total</td>
+        <td><%= t 'Total' %></td>
       </tr>
       <% @subjects.each do |subject| %>
         <tr class="tr-<%= cycle('odd', 'even') %>">
@@ -78,7 +78,7 @@
 
       <% end %>
       <tr class="tr-head">
-        <td>Total</td>
+        <td><%= t 'Total' %></td>
         <% @max_total = 0 %>
         <% @marks_total = 0 %>
 
@@ -101,7 +101,7 @@
     </table>
     <% if @mmg == @g %>
       <% percentage = (@marks_total*100/@max_total.to_f)  unless @max_total==0 %>
-      <h4>Total Marks = <%= @marks_total %> | Aggregate % = <%= "%.2f" %percentage  unless percentage.nil?%> </h4>
+      <h4>合计标记 = <%= @marks_total %> | 合计 % = <%= "%.2f" %percentage  unless percentage.nil?%> </h4>
     <% end %>
     <div class="extender"></div>
   </div></div>

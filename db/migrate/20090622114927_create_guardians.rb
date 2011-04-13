@@ -2,7 +2,7 @@
 class CreateGuardians < ActiveRecord::Migration
   def self.up
     create_table :guardians do |t|
-      t.references :ward, :comment => "关联ward"
+      t.references :ward, :comment => "关联ward(学生id)"
       t.string     :first_name, :comment => "姓氏"
       t.string     :last_name, :comment => "名字"
       t.string     :relation, :comment => "关系"
@@ -19,7 +19,7 @@ class CreateGuardians < ActiveRecord::Migration
       t.references :country, :comment => "国家"
 
       t.date       :dob, :comment => "dob"
-      t.string     :occupation, :comment => "占用"
+      t.string     :occupation, :comment => "职业"
       t.string     :income, :comment => "收入"
       t.string     :education, :comment => "教育程度"
 

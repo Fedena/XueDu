@@ -24,26 +24,26 @@
       <%= error_messages_for :course %>
 
       <div class="label-field-pair">
-        <div class="label-container"><%= f.label t('course.course_name') %></div>
+        <div class="label-container"><%= f.label_require :course_name %></div>
         <div class="input-container"><%= f.text_field :course_name %></div>
       </div>
 
       <div class="label-field-pair">
-        <div class="label-container"><%= f.label t('course.section_name') %></div>
+        <div class="label-container"><%= f.label :section_name %></div>
         <div class="input-container"><%= f.text_field :section_name %></div>
       </div>
 
       <div class="label-field-pair">
-        <div class="label-container"><%= f.label t('course.code') %></div>
+        <div class="label-container"><%= f.label_require :code %></div>
         <div class="input-container"><%= f.text_field :code %></div>
       </div>
 
-      <h4><%= t 'batch.init_batch' %></h4>
+      <h4><%= t 'init_batch' %></h4>
 
       <% f.fields_for :batches do |batch_form| %>
 
         <div class="label-field-pair">
-          <div class="label-container"><%= batch_form.label t('name') %></div>
+          <div class="label-container"><%= batch_form.label t('batch.name') %></div>
           <div class="input-container"><%= batch_form.text_field :name %></div>
         </div>
 
@@ -60,7 +60,7 @@
 
       <% end %>
 
-      <%= submit_tag "", :value => "► Save", :class => "submit_button" %>
+      <%= submit_tag "", :value => "► 保存", :class => "submit_button" %>
 
     <% end %>
 

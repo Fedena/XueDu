@@ -1,7 +1,7 @@
 <div id="content-header">
   <img src="/images/student_details/student_details_logo.jpg" />
-  <h1>Students</h1>
-  <h3>Reports center</h3>
+  <h1><%= t 'Students' %></h1>
+  <h3><%= t 'reports_center' %></h3>
   <div id="app-back-button">
      <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -11,11 +11,11 @@
 
   <div id="exam-results-dashboard">
 
-    <h3>Academics</h3>
+    <h3><%= t 'Academics' %></h3>
 
     <div class="exam-results-reports-col">
     <% if permitted_to? :exam_report, :student %>
-      <h4>Recent exams</h4>
+      <h4><%= t 'Recent_exam' %></h4>
       <ul>
         <% @exam_groups.each do |e| %>
           <li><%= link_to e.name, { :controller => 'exam', :action => 'generated_report',:exam_group=>e.id, :student => @student.id} %></li>
@@ -23,7 +23,7 @@
       </ul>
     <%end%>
 
-      <h4>Subjectwise results</h4>
+      <h4><%= t 'SubjectWise' %></h4>
       <ul>
         <% @subjects.each do |s| %>
           <li><%= link_to s.name, { :controller => 'exam', :action => 'generated_report3', :student => @student.id, :subject => s.id } %></li>
@@ -33,14 +33,14 @@
     
     <div class="exam-results-reports-col">
 
-      <h4>Detailed reports</h4>
+      <h4><%= t 'Detailed_report' %></h4>
       <ul>
         <% unless @grouped_exams.empty? %>
-        <li><%= link_to 'Final Report(Exams Grouped)',{:controller=>'exam', :action=>'generated_report4',:student=>@student.id,:type=>'grouped'} %></li>
-        <li><%= link_to 'Compare with past years (Exams Grouped)', { :controller => 'exam', :action => 'previous_years_marks_overview',:student=>@student.id,:type=>'grouped' } %></li>
+        <li><%= link_to '最终报表(分组考试)',{:controller=>'exam', :action=>'generated_report4',:student=>@student.id,:type=>'grouped'} %></li>
+        <li><%= link_to '和往年相比(分组考试)', { :controller => 'exam', :action => 'previous_years_marks_overview',:student=>@student.id,:type=>'grouped' } %></li>
         <% else %>
-        <li><%= link_to 'Final Report',{:controller=>'exam', :action=>'generated_report4',:student=>@student.id,:type=>'general'} %></li>
-        <li><%= link_to 'Compare with past years', { :controller => 'exam', :action => 'previous_years_marks_overview',:student=>@student.id } %></li>
+        <li><%= link_to '最终报表',{:controller=>'exam', :action=>'generated_report4',:student=>@student.id,:type=>'general'} %></li>
+        <li><%= link_to '和往年相比', { :controller => 'exam', :action => 'previous_years_marks_overview',:student=>@student.id } %></li>
         <% end %>
       </ul>
 
@@ -66,12 +66,12 @@
 
   <div id="attendance-reports-dashboard">
 
-    <h3>Attendance</h3>
+    <h3><%= t 'Attendance' %></h3>
 
-    <h4>Detailed Reports</h4>
+    <h4><%= t 'Detailed_report' %></h4>
 
     <ul>
-      <li><%= link_to 'Current year reports', :controller => 'student_attendance', :action => 'student', :id => @student %></li>
+      <li><%= link_to '本年度报告', :controller => 'student_attendance', :action => 'student', :id => @student %></li>
     </ul>
       <% unless @old_batches.empty? %>
     <h4>Archives</h4>

@@ -57,7 +57,7 @@ class StudentAttendanceController < ApplicationController
   end
 
   def month
-    if params[:mode] == 'Monthly'
+    if params[:mode] == '每月'
       @year = Date.today.year
       render :update do |page|
         page.replace_html 'month', :partial => 'month'

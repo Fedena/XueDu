@@ -196,7 +196,7 @@ class StudentController < ApplicationController
           StudentAdditionalDetails.create(:student_id=>@student.id,:additional_field_id=>k,:additional_info=>v['additional_info'])
         end
       end
-      flash[:notice] = "学生 #{@student.first_name} 附件信息更新成功."
+      flash[:notice] = "学生 #{@student.first_name} 附加信息更新成功."
       redirect_to :action => "profile", :id => @student.id
     end
   end

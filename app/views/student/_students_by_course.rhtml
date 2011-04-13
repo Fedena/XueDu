@@ -3,13 +3,13 @@
   <table align="center" width="100%" cellpadding="1" cellspacing="1">
     <tr class="tr-head">
       <td>
-        Sl no.
+        <%= tt('student.s1_no')%>
       </td>
       <td>
-        Name
+        <%= tt('student.name')%>
       </td>
       <td>
-        Adm no.
+        <%= tt('student.admission_no')%>
       </td>
       <td>
         
@@ -45,7 +45,7 @@
         </td>
 
         <td class="col-4">
-          <%=  link_to 'View Profile', :controller => "student", :action => "profile", :id => r.id %>
+          <%=  link_to t('View_profile'), :controller => "student", :action => "profile", :id => r.id %>
         </td>
       </tr>
     <% end %>

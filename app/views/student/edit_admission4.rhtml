@@ -1,7 +1,7 @@
 <div id="content-header">
   <img src="/images/admission/admission_page_logo.jpg" />
   <h1><%= @student.full_name %></h1>
-  <h3>Edit additional details</h3>
+  <h3><%= t 'Edit_additional_detail' %></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -31,7 +31,7 @@
       </div>
 
     <div class="save-proceed-button">
-      <%= submit_tag "► Save" %>
+      <%= submit_tag "", :value => "► 保存" %>
     </div>
   <% end %>
 
