@@ -15,14 +15,14 @@ class UserController < ApplicationController
   end
   
   def list_user
-    if params[:user_type] == 'Admin'
+    if params[:user_type] == '管理员'
       @users = User.find(:all, :conditions => {:admin => true}, :order => 'first_name ASC')
       render(:update) do |page|
         page.replace_html 'users', :partial=> 'users'
         page.replace_html 'employee_user', :text => ''
         page.replace_html 'student_user', :text => ''
       end
-    elsif params[:user_type] == 'Employee'
+    elsif params[:user_type] == '员工'
       render(:update) do |page|
         hr = Configuration.find_by_config_value("HR")
         unless hr.nil?
@@ -36,7 +36,7 @@ class UserController < ApplicationController
           page.replace_html 'student_user', :text => ''
         end
       end
-    elsif params[:user_type] == 'Student'
+    elsif params[:user_type] == '学生'
       render(:update) do |page|
         page.replace_html 'student_user', :partial=> 'student_user'
         page.replace_html 'users', :text => ''

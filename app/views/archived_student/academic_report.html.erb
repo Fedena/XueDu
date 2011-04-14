@@ -1,7 +1,7 @@
 <div id="content-header">
   <img src="/images/examination/show_exam.png" alt="Exam" />
-  <h1>Exams</h1>
-  <h3>Acadamic report</h3>
+  <h1><%= t 'Exams' %></h1>
+  <h3><%= t 'Academic_report' %></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -14,11 +14,11 @@
 
   <table id="listing" wisth="100%">
     <tr class="tr-head">
-      <td>Subject</td>
+      <td>课目</td>
       <% @exam_groups.each do |exam_group| %>
         <td><%= exam_group.name %></td>
       <% end %>
-      <td>Total</td>
+      <td>合计</td>
     </tr>
     <% @subjects.each do |subject| %>
       <tr class="tr-<%= cycle('odd','even') %>">
@@ -53,7 +53,7 @@
       </tr>
     <% end %>
     <tr class="tr-head">
-      <td>Total</td>
+      <td>合计</td>
       <% @max_total = 0 %>
       <% @marks_total = 0 %>
 
@@ -74,7 +74,7 @@
     </tr>
   </table>
   <% if @mmg == @g %>
-    <h4> Total Marks = <%="%.2f" %@marks_total %> | Aggregate % = <%="%.2f" %(@marks_total*100/@max_total) unless @max_total ==0 %> </h4>
+    <h4> 合计标记 = <%="%.2f" %@marks_total %> | 合计 % = <%="%.2f" %(@marks_total*100/@max_total) unless @max_total ==0 %> </h4>
   <% end %>
 
   <div class="extender"></div>

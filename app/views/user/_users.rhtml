@@ -5,13 +5,13 @@
     <table id="listing" align="center" width="100%" cellpadding="1" cellspacing="1">
       <tr class="tr-head">
         <td>
-          Sl no.
+          序号 
         </td>
         <td>
-          Name
+          姓名 
         </td>
         <td>
-         Username
+          用户名 
         </td>
         <td>
         
@@ -43,7 +43,7 @@
             <%= user.username %>
           </td>
           <td class="col-4">
-            <%= link_to 'View Profile', :controller => 'user', :action => 'profile', :id => user.username  %>
+            <%= link_to t('View_profile'), :controller => 'user', :action => 'profile', :id => user.username  %>
           </td>
 
         </tr>

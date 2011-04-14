@@ -46,9 +46,18 @@ zh-CN:
   Active_batches: "当前期次"
   Active_classrooms: "关联的教室"
 
+  Student_leave_institute: "学生毕业学校"
+  descripe: "当学生从学校毕业时,使用此操作将他们从在校生列表中删除,并将他们保存在毕业生列表中."
+  Student_left: "学生已经离开学校"
+  delete_descripe: "将学生记录从学校数据库彻底删除.使用此操作仅当你意外的创建了学生记录,并且想彻底删除他."
+  Leave: "离校"
+  Warning: "(警告:所有被删除的学生记录将无法恢复!)"
+
   Reports: "报告"
   Guardians: "监护人"
   Send_email: "发送邮件"
+  Recipients: "收件人"
+  Generate_TC: "生成TC"
 
   Batch: "期次"
   init_batch: "期次初始化详情"
@@ -75,6 +84,7 @@ zh-CN:
   Assign: "指定"
 
   Subjects: "课目"
+  Subject_details: "课目信息"
   Add_Normal_Subject: "新增普通课目"
   Add_subject_to_elective: "添加课目到选修组"
   New_elective_group: "新增选修组"
@@ -86,12 +96,14 @@ zh-CN:
   view_detail: "查看详情"
   View_all: "查看全部"
   reports_center: "报告中心"
+  delete_student: "删除学生记录"
   Academics: "学者"
   Academic_report: "学者报告"
   Student_report: "学生报告"
   Recent_exam: "最近的考试"
   SubjectWise: "课目结果"
   Detailed_report: "详细报告"
+  Archives: "档案"
   Add_additional_detail: "新增附加内容"
   Edit_additional_detail: "编辑附加内容"
   No_details: "没有找到相关的附加内容"
@@ -114,7 +126,15 @@ zh-CN:
   send_sms: "发送短信"
 
   Employee: "员工"
+  Employee_profile: "员工简介"
+  Details: "详情"
   Department: "部门"
+  General: "概括"
+  Personal: "个人"
+  Address: "地址"
+  Contact: "联系"
+  Bank_info: "银行信息"
+  Additional_info: "附加信息"
 
   School: "校区"
   Manage_compuse: "管理校区"
@@ -127,6 +147,16 @@ zh-CN:
   New_classroom: "新建教室"
   Edit_classroom: "编辑教室"
 
+  Manage_user: "管理用户"
+  user_detail: "用户信息"
+  Search_user: "查询用户"
+  All_user: "所有用户"
+  all_user_detail: "所有用户信息"
+  User_profile: "用户简介"
+  User_info: "用户信息"
+  Edit_user: "编辑用户"
+  Update_user_info: "更新用户信息"
+
   New: "新建"
   Add: "添加"
   Edit: "编辑"
@@ -136,6 +166,8 @@ zh-CN:
   All: "全选"
   None: "不选"
   View_profile: "查看简介"
+  Change_password: "修改密码"
+
   Add_guardian: "新增监护人"
   Are_you_sure: "你确定执行此操作?"
   Select_a_course: "选择一个课程"
@@ -146,6 +178,9 @@ zh-CN:
   Grading_system: "记分等级"
   Batch_transfers: "期次转移"
   Select_a_compuse: "选择一个校区"
+  Select_a_catetory: "选择一个分类"
+  Select_a_role: "选择一个角色"
+
   login:
     Username: "用户名"
     Password: "密  码"
@@ -214,7 +249,8 @@ zh-CN:
     parent_info: "家长信息"
     parent_profile: "家长简介"
     parent_or_guardian: "家长/监护人:"
-    add_guardian_detail: "新增监护人详情"
+    add_guardian_detail: "新增监护人信息"
+    edit_guardian_detail: "编辑家长/监护人信息"
   batch:
     name: "名称"
     start_date: "开始时间"
@@ -258,10 +294,10 @@ zh-CN:
       student:
         admission_no: "学号" 
         admission_date: "入学时间"
-        first_name: "姓氏"
+        first_name: "名字"
         middle_name: "中间名"
-        last_name: "名字"
-        batch: "课程 & 学期"
+        last_name: "姓氏"
+        batch_id: "课程 & 学期"
         date_of_birth: "出生日期"
         gender: "性别"
         blood_group: "血型"
@@ -284,16 +320,19 @@ zh-CN:
         image_file: "上传照片 (不超过50kb)"
         s1_no: "序号"
         name: "名称"
+        status: "状态"
       guardian:
         ward: "学生学号"
-        first_name: "姓氏"
-        last_name: "名字"
+        name: "姓名"
+        first_name: "名字"
+        last_name: "姓氏"
         relation: "与学生关系"
         date_of_birth: "出生日期"
         education: "教育程度"
         occupation: "职业"
         income: "收入"
         email: "电子邮箱"
+        address: "公司地址"
         office_address_line1: "公司地址1"
         office_address_line2: "公司地址2"
         city: "城市"
@@ -302,8 +341,6 @@ zh-CN:
         office_phone1: "办公电话1" 
         office_phone2: "办公电话2" 
         mobile_phone: "手机号码"
-      parent_detail:
-        admission_no: "学生学号"
       student_previous_details:
         institution: "学院名称"
         course: "课程"
@@ -321,6 +358,14 @@ zh-CN:
         student_name: "学生姓名"
         admission_no: "学生学号"
         mode: "模式"
+      user:
+        username: "用户名"
+        name: "姓名"
+        role: "角色"
+        email: "电子邮箱"
+        old_password: "原密码"
+        new_password: "新密码"
+        confirm_password: "确认新密码"
 
     errors:
       template: # ~ 2.3.5 backward compatible

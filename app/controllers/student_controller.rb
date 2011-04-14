@@ -283,7 +283,7 @@ class StudentController < ApplicationController
     @parent = Guardian.find(params[:id])
     @student = Student.find(@parent.ward_id)
     @countries = Country.all
-    if request.post? and @parent.update_attributes(params[:parent_detail])
+    if request.post? and @parent.update_attributes(params[:guardian])
       flash[:notice] = t('msg.student.parent_update') 
       redirect_to :controller => "student", :action => "guardians", :id => @student.id
     end
@@ -294,11 +294,11 @@ class StudentController < ApplicationController
     if request.post?
       recipient_list = []
       case params['email']['recipients']
-      when 'Student'
+      when '学生'
         recipient_list << @student.email
-      when 'Guardian'
+      when '监护人'
         recipient_list << @student.immediate_contact.email unless @student.immediate_contact.nil?
-      when 'Student & guardian'
+      when '学生 & 监护人'
         recipient_list << @student.email
         recipient_list << @student.immediate_contact.email unless @student.immediate_contact.nil?
       end
@@ -386,7 +386,8 @@ class StudentController < ApplicationController
   end
 
   def add_guardian
-    @parent_info = Guardian.new(params[:parent_detail])
+    #@parent_info = Guardian.new(params[:parent_detail])
+    @parent_info = Guardian.new(params[:guardian])
     @countries = Country.all
     if request.post? and @parent_info.save
       flash[:notice] = "家长信息保存为 #{@parent_info.ward_id}"

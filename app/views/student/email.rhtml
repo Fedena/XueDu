@@ -1,7 +1,7 @@
 <div id="content-header">
   <img src="/images/student_details/student_details_logo.jpg" />
-  <h1>Students</h1>
-  <h3>Send email</h3>
+  <h1><%= t 'Students' %></h1>
+  <h3><%= t 'Send_email' %></h3>
   <div id="app-back-button">
    <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -20,30 +20,28 @@
     </div>
 
     <div class="extender"> </div>
-
   </div>
-
 
   <% form_for :email do |f| %>
 
   <div class="label-field-pair">
-    <label for="email_subject">Subject</label>
+    <label for="email_subject"><%= t('Subjects') %></label>
     <div class="text-input-bg"><%= f.text_field 'subject' %></div>
   </div>
 
   <div class="label-field-pair">
-    <label for="email_recipients">Recipients</label>
-    <div class="text-input-bg"><%= select 'email', 'recipients', ['Student', 'Guardian', 'Student & guardian'] %></div>
+    <label for="email_recipients"><%= t('Recipients') %></label>
+    <div class="text-input-bg"><%= select 'email', 'recipients', ['学生', '监护人', '学生 & 监护人'] %></div>
   </div>
 
   <div class="message-area">
     <br/>
-    <label for="email_message">Message</label>
+    <label for="email_message"><%= t 'Messages' %></label>
     <%= f.text_area 'message' %>
   </div>
 
   <div class="submit-area">
-    <%= submit_tag '' , :value => "► Create" %>
+    <%= submit_tag '' , :value => "► 发送" %>
   </div>
 
   <% end %>

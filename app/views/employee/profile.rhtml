@@ -3,8 +3,8 @@
 
 <div id="content-header">
   <img src="/images/HR/show_hr.png" alt="" />
-  <h1>Employee Profile</h1>
-  <h3>Details</h3>
+  <h1><%= t 'Employee_profile' %></h1>
+  <h3><%= t 'Details' %></h3>
   <div id="app-back-button">
    <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -14,14 +14,14 @@
 <div id="nav">
   <ul>
     <li>
-      <a href="#" class="drops" id="link_one">Profile &#9660;</a>
+      <a href="#" class="drops" id="link_one">简介 &#9660;</a>
       <ul id="box_one" class="scriptaculously" style="display:none;">
-        <li><%= link_to_remote "General", :url => {:action => "profile_general", :id => @employee.id}, :update => "profile-infos" %></li>
-        <li><%= link_to_remote "Personal", :url => {:action => "profile_personal", :id => @employee.id}, :update => "profile-infos" %></li>
-        <li><%= link_to_remote "Address", :url => {:action => "profile_address", :id => @employee.id}, :update => "profile-infos" %></li>
-        <li><%= link_to_remote "Contact", :url => {:action => "profile_contact", :id => @employee.id}, :update => "profile-infos" %></li>
-        <li><%= link_to_remote "Bank Info", :url => {:action => "profile_bank_details", :id => @employee.id}, :update => "profile-infos" %></li>
-        <li><%= link_to_remote "Additional Info", :url => {:action => "profile_additional_details", :id => @employee.id}, :update => "profile-infos" %></li>
+        <li><%= link_to_remote t("General"), :url => {:action => "profile_general", :id => @employee.id}, :update => "profile-infos" %></li>
+        <li><%= link_to_remote t("Personal"), :url => {:action => "profile_personal", :id => @employee.id}, :update => "profile-infos" %></li>
+        <li><%= link_to_remote t("Address"), :url => {:action => "profile_address", :id => @employee.id}, :update => "profile-infos" %></li>
+        <li><%= link_to_remote t("Contact"), :url => {:action => "profile_contact", :id => @employee.id}, :update => "profile-infos" %></li>
+        <li><%= link_to_remote t("Bank_info"), :url => {:action => "profile_bank_details", :id => @employee.id}, :update => "profile-infos" %></li>
+        <li><%= link_to_remote t("Additional_info"), :url => {:action => "profile_additional_details", :id => @employee.id}, :update => "profile-infos" %></li>
       </ul>
     </li>
 

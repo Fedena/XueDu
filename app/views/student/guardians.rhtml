@@ -22,8 +22,6 @@
 
   <div id="student_profile_heading">
 
-
-
     <div id="student_main_info">
       <span class="name"> <%= @student.first_name %> <%= @student.middle_name %> <%= @student.last_name %>  </span>
       <span class="course"> 课程 & 学期: <%= @student.batch.course_name %> </span>
@@ -45,7 +43,6 @@
 
   </div>
 
-
   <div id="parent-list">
 
     <% @parents.each do |p| %>
@@ -53,47 +50,46 @@
       <a name="guardian-details-id-<%= p.id %>"> </a>
       <div id="new_profile_info_top">
         <div class="profile_top_banner"><%= image_tag "master_student/profile/topbanner.png" %></div>
-        <div class="profile_info_label"> Name </div>
+        <div class="profile_info_label"> <%= tt('guardian.name')%></div>
         <div class="profile_info_text">
           <%= p.first_name %> <%= p.last_name %>
         </div>
 
-        <div class="profile_info_label2">Relation</div>
+        <div class="profile_info_label2"><%= tt('guardian.relation') %></div>
         <div class="profile_info_text2"><%= p.relation %></div>
 
-        <div class="profile_info_label">Date of birth</div>
+        <div class="profile_info_label"><%= tt('guardian.date_of_birth') %></div>
         <div class="profile_info_text"> <%= p.dob.strftime('%d %B, %Y') unless p.dob.nil? %> </div>
 
-
         <div class="new_profile_info_area1">
-          <div class="profile_info_label2">Email</div>
+          <div class="profile_info_label2"><%= tt('guardian.email') %></div>
           <div class="profile_info_text2"> <%= p.email %> </div>
 
-          <div class="profile_info_label">Phone 1</div>
+          <div class="profile_info_label"><%= tt('guardian.office_phone1') %></div>
           <div class="profile_info_text"> <%= p.office_phone1 %> </div>
         </div>
 
         <div class="new_profile_info_area1">
-          <div class="profile_info_label2">Phone 2</div>
+          <div class="profile_info_label2"><%= tt('guardian.office_phone2') %></div>
           <div class="profile_info_text2"> <%= p.office_phone2 %> </div>
 
-          <div class="profile_info_label">Mobile phone</div>
+          <div class="profile_info_label"><%= tt('guardian.mobile_phone') %></div>
           <div class="profile_info_text"> <%= p.mobile_phone %> </div>
         </div>
 
         <div class="new_profile_info_area1">
-          <div class="profile_info_label2">Address</div>
+          <div class="profile_info_label2"><%= tt('guardian.address') %></div>
           <div class="profile_info_text2"> <%= p.office_address_line1%>,<%= p.office_address_line2%> </div>
 
           <div class="profile_info_label"> </div>
-          <div class="profile_info_text"> <%= p.city %> <%= p.state %> <%= p.country.name %> </div>
+          <div class="profile_info_text"> <%= p.city %> <%= p.state %> <%= p.country.try(:name) %> </div>
         </div>
 
         <div class="new_profile_info_area1">
-          <div class="profile_info_label2">Income</div>
+          <div class="profile_info_label2"><%= tt('guardian.income') %></div>
           <div class="profile_info_text2"> <%= p.income %> </div>
 
-          <div class="profile_info_label">Occupation</div>
+          <div class="profile_info_label"><%= tt('guardian.occupation') %></div>
           <div class="profile_info_text"> <%= p.occupation %> </div>
         </div>
         <div class="extender"></div>
@@ -101,16 +97,16 @@
       <div class="button-pair">
       <% if permitted_to? :edit_guardian,:student %>
         <div class="parent-edit-button">
-          <%= link_to "► Edit",
+          <%= link_to "► 编辑",
             :controller => 'student', :action => 'edit_guardian', :id => p.id %>
         </div>
       <%  end %>
       <% if permitted_to? :del_guardian,:student %>
         <%  if @student.guardians.size > 1 %>
           <div class="parent-edit-button">
-            <%= link_to "► Delete",
+            <%= link_to "► 删除",
               {:controller => 'student', :action => 'del_guardian', :id => p.id },
-              {:confirm => 'Are you completely sure?'} %>
+              {:confirm => t('Are_you_sure')} %>
           </div>
         <%  end %>
       <% end %>

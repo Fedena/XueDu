@@ -1,7 +1,7 @@
 <div id="content-header">
   <img src="/images/student_details/student_details_logo.jpg" />
-  <h1>Student info</h1>
-  <h3>Previous Details</h3>
+  <h1><%= t 'student.student_info' %></h1>
+  <h3><%= t 'student_previous_data.previous_detail' %></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -23,8 +23,8 @@
 
     <div id ="student_main_info">
       <h3> <%= @student.first_name %> <%= @student.middle_name %> <%= @student.last_name %>  </h3>
-      <h4> Course & Batch : <%= @student.batch.course_name %> </h4>
-      <h4> Adm no. : <%= @student.admission_no %> </h4>
+      <h4> 课程 & 期次: <%= @student.batch.course_name %> </h4>
+      <h4> 学号: <%= @student.admission_no %> </h4>
     </div>
 
           <div class="extender"> </div>
@@ -32,27 +32,25 @@
 
   <div id="new_profile_info_top">
 
-
-    
       <% unless @previous_data.nil? %>
       <div class="new_profile_info_area1">
-      <div class="profile_info_label_top">Institution Name</div>
+      <div class="profile_info_label_top"><%= tt('student_previous_details.institution') %></div>
       <div class="profile_info_text_top"><%=@previous_data.institution %></div>
     </div>
           <div class="new_profile_info_area1">
-      <div class="profile_info_label_top2">Course</div>
+      <div class="profile_info_label_top2"><%= tt('student_previous_details.course') %></div>
       <div class="profile_info_text_top2"><%=@previous_data.course %></div>
 
-      <div class="profile_info_label_top">Year </div>
+      <div class="profile_info_label_top"><%= tt('student_previous_details.year') %></div>
       <div class="profile_info_text_top"><%=@previous_data.year %></div>
     </div>
           <div class="new_profile_info_area1">
-      <div class="profile_info_label_top2">Total Mark</div>
+      <div class="profile_info_label_top2"><%= tt('student_previous_details.total_mark') %></div>
       <div class="profile_info_text_top2"><%=@previous_data.total_mark %></div>
     </div>
               <div class="new_profile_info_area1">
       <div class="profile_info_label_top"></div>
-      <div class="profile_info_text_top"><u>Subjects</u></div>
+      <div class="profile_info_text_top"><u>课目</u></div>
     </div>
     <div class="prev_subject_box">
         <% @previous_subjects.each do |s| %>
