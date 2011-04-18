@@ -470,10 +470,10 @@ class EmployeeController < ApplicationController
     @current_user = current_user
     @employee = Employee.find(params[:id])
     @new_reminder_count = Reminder.find_all_by_recipient(@current_user.id, :conditions=>"is_read = false")
-    @gender = "Male"
-    @gender = "Female" if @employee.gender == false
-    @status = "Active"
-    @status = "Inactive" if @employee.status == false
+    @gender = "男"
+    @gender = "女" if @employee.gender == false
+    @status = "有效"
+    @status = "无效" if @employee.status == false
     @reporting_manager = Employee.find(@employee.reporting_manager_id).first_name unless @employee.reporting_manager_id.nil?
     exp_years = @employee.experience_year
     exp_months = @employee.experience_month

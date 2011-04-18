@@ -11,8 +11,8 @@ $jq(document).ready(function() {
 
 <div id="content-header">
   <img src="/images/HR/show_hr.png" alt="" />
-  <h1>Edit employee information</h1>
-  <h3>General</h3>
+  <h1><%= t 'Edit_employee_info' %></h1>
+  <h3><%= t 'General' %></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -31,101 +31,101 @@ $jq(document).ready(function() {
 
  <div id="admission1_form">
 
-    <div id="necessary-field-notification"> Fields marked with <span class="necessary-field">*</span> must be filled.</div>
-    <span class="span-sub-heading">General Details</span>
+    <div id="necessary-field-notification"> 输入框标有 <span class="necessary-field">*</span> 为必填项.</div>
+    <span class="span-sub-heading"><%= t 'General_detail' %></span>
     <hr class="sub-heading"></hr>
       <div class="label-field-pair">
-        <label for="employee_id">Employee no. <span class="necessary-field">*</span> </label>
+        <%= a.label :employee_number %><span class="necessary-field">*</span>
         <div class="text-input-bg"><%= a.text_field :employee_number, :value => @employee.employee_number %></div>
       </div>
     <hr class="label-underline"></hr>
 
       <div class="label-field-pair">
-        <label for="employee_joining_date">Joining date. </label>
+        <%= a.label :joining_date %>
         <div class="text-input-bg"><%= a.text_field :joining_date,:autocomplete => 'off', :value => @employee.joining_date %></div>
       </div>
      <hr class="label-underline"></hr>
 
       <div class="label-field-pair">
-        <label for="employee_name">First name <span class="necessary-field">*</span> </label>
+        <%= a.label :first_name %><span class="necessary-field">*</span>
         <div class="text-input-bg"><%= a.text_field :first_name, :value => @employee.first_name %></div>
       </div>
 
      <hr class="label-underline"></hr>
 
       <div class="label-field-pair">
-        <label for="employee_name">Middle name <span class="necessary-field">*</span> </label>
+        <%= a.label :middle_name %><span class="necessary-field">*</span>
         <div class="text-input-bg"><%= a.text_field :middle_name, :value => @employee.middle_name %></div>
       </div>
 
      <hr class="label-underline"></hr>
 
       <div class="label-field-pair">
-        <label for="employee_name">Last name <span class="necessary-field">*</span> </label>
+        <%= a.label :last_name %><span class="necessary-field">*</span>
         <div class="text-input-bg"><%= a.text_field :last_name, :value => @employee.last_name %></div>
       </div>
 
      <hr class="label-underline"></hr>
 
       <div class="label-field-pair">
-        <label for="employee_department">Department <span class="necessary-field">*</span></label>
+        <%= a.label :department %> <span class="necessary-field">*</span>
         <div class="text-input-bg"><%= select :employee, :employee_department_id, @departments.map {|s| [s.name, s.id]}, :value => @employee.employee_department_id %></div>
       </div>
 
      <hr class="label-underline"></hr>
 
       <div class="label-field-pair">
-        <label for="employee_category">Category <span class="necessary-field">*</span> </label>
+        <%= a.label :category %><span class="necessary-field">*</span>
         <div class="text-input-bg"><%= select :employee, :employee_category_id, @categories.map { |s| [s.name, s.id] },
-                            {:prompt => "Select"},
+                            {:prompt => "选择"},
                             {:onChange => "#{remote_function(:url => {:action => "update_positions"}, :with => "'category_id='+value")}"}%></div>
       </div>
 
      <hr class="label-underline"></hr>
     
        <div class="label-field-pair">
-         <label for="employee_position">Position <span class="necessary-field">*</span></label>
+         <%= a.label :position %> <span class="necessary-field">*</span>
          <div class="text-input-bg"><div id="positions1"> <%= render :partial => 'positions', :object => @positions %> </div></div>
        </div>
 
      <hr class="label-underline"></hr>
 
         <div class="label-field-pair">
-          <label for="employee_grade">Grade <span class="necessary-field">*</span></label>
+          <%= a.label :grade %><span class="necessary-field">*</span>
           <div class="text-input-bg"><%= select :employee, :employee_grade_id, @grades.map {|s| [s.name, s.id]}, :value => @employee.employee_grade_id %></div>
         </div>
      <hr class="label-underline"></hr>
 
        <div class="label-field-pair">
-          <label for="employee_job_title">Job Title</label>
+          <%= a.label :job_title %>
           <div class="text-input-bg"><%= a.text_field :job_title, :value => @employee.job_title %></div>
         </div>
      <hr class="label-underline"></hr>
 
        <div class="label-field-pair">
-          <label for="employee_qualification">Qualification</label>
+          <%= a.label :qualification %>
           <div class="text-input-bg"><%= a.text_field :qualification, :value => @employee.qualification %></div>
       </div>
      <hr class="label-underline"></hr>
         <div class="label-field-pair-text-area">
-          <label for="employee_experience">Experience Info</label>
+          <%= a.label :experience_detail %>
           <div class="textarea-input-bg"><%= a.text_area :experience_detail,:cols => 27, :rows => 5,:class => 'admission1-textarea' %></div>
         </div>
          <hr class="label-underline"></hr>
         <div class="label-field-pair">
-          <label for="employee_total-experience">Total Experience</label>
-          <div class="text-input-bg"><%= select :employee, :experience_year, (0..20),{:prompt=>"Year"} %>
-          <%= select :employee, :experience_month, (0..11),{:prompt=>"Month"} %></div>
+          <%= a.label :total_experience %>
+          <div class="text-input-bg"><%= select :employee, :experience_year, (0..20),{:prompt=>"年"} %>
+          <%= select :employee, :experience_month, (0..11),{:prompt=>"月"} %></div>
         </div>
          <hr class="label-underline"></hr>
     
       <div class="label_field_pair">
-          <label class="label_for_employee_gender" for="master_student_gender">Gender</label>
+          <%= a.label :gender %>
           <div class="employee_gender_value">
-          <label class="label_for_gender" for="master_student_gender_true">Male</label>
+          <label class="label_for_gender" for="master_student_gender_true">男</label>
           <%= a.radio_button  "gender", "true", :checked => "checked" %>
 
-          <label class="label_for_gender" for="master_student_gender_false">Female</label>
+          <label class="label_for_gender" for="master_student_gender_false">女</label>
           <%= a.radio_button  "gender", "false" %>
           </div>
         </div>
@@ -133,17 +133,17 @@ $jq(document).ready(function() {
 
 
     <div class="label_field_pair">
-          <label class="employee_status" for="employee_status">Status</label>
+          <%= a.label :status %>
 
-          <label class="label_for_status" for="employee_status_true">Active</label>
+          <label class="label_for_status" for="employee_status_true">有效</label>
           <%= a.radio_button  "status", "true", :checked => "checked" %>
 
-          <label class="label_for_status" for="employee_status_false">Inactive</label>
+          <label class="label_for_status" for="employee_status_false">无效</label>
           <%= a.radio_button  "status", "false" %>
         </div>
 
   </div>
-  <%= submit_tag "► Update", :class => "submit_button" %>
+  <%= submit_tag "", :value => "► 更新", :class => "submit_button" %>
   <% end %>
   </div>
 

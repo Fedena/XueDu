@@ -1,7 +1,7 @@
 <div id="content-header">
   <img src="/images/manage_news/manage_news_logo.png" />
-  <h1>School News</h1>
-  <h3>Latest announcements</h3>
+  <h1><%= t 'School_news' %></h1>
+  <h3><%= t 'Latest_announcements' %></h3>
   <div id="app-back-button">
   <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -9,9 +9,9 @@
 
 <div id="inner-tab-menu">
   <ul>
-    <li><%= link_to "View all", :controller => 'news', :action => 'all' %></li>
+    <li><%= link_to t("View_all"), :controller => 'news', :action => 'all' %></li>
     <% if permitted_to? :add,:news %>
-      <li><%= link_to 'Add', :controller => 'news', :action => 'add' %>
+      <li><%= link_to t('Add'), :controller => 'news', :action => 'add' %>
     <% end %>
   </ul>
 </div>
@@ -20,9 +20,9 @@
     <div class="news_search_add">
       <div id="news_bg">
         <form name="s1form" action="" style="display:inline;">
-          <h2>Search News</h2>
+          <h2><%= t 'Search_news' %></h2>
           <%= text_field_tag("query", params['query'], :autocomplete => 'off') %>
-          <div id="go"><%= submit_tag "", :value =>"Go", :controller=> 'news', :action=>"index" %></div>
+          <div id="go"><%= submit_tag "", :value =>"查询", :controller=> 'news', :action=>"index" %></div>
         </form>
         <div class="extender2"></div>
       </div>

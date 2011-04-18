@@ -1,7 +1,7 @@
 <div id="content-header">
   <img src="/images/manage_news/manage_news_logo.png" />
-  <h1>School News</h1>
-  <h3>Latest announcements</h3>
+  <h1><%= t 'School_news' %></h1>
+  <h3><%= t 'Latest_announcements' %></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -17,19 +17,19 @@
     <table id="listing" align="center" width="100%" cellpadding="1" cellspacing="1">
       <tr class="tr-head">
         <td>
-          Sl no.
+          序号 
         </td>
         <td>
-          Title
+          标题 
         </td>
         <td>
-          Author
+          作者 
         </td>
         <td>
-          Comments
+          评论 
         </td>
         <td>
-          Posted
+          发表时间
         </td>
       </tr>
       <tr class="tr-blank"></tr>

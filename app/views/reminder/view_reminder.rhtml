@@ -1,7 +1,7 @@
 <div id="content-header">
   <img src="/images/manage_news/manage_news_logo.png" />
-  <h1>Reminder</h1>
-  <h3>View</h3>
+  <h1><%= t 'Reminder' %></h1>
+  <h3><%= t 'View' %></h3>
   <div id="app-back-button">
   <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -9,9 +9,9 @@
 
 <div id="inner-tab-menu">
   <ul>
-     <li><%= link_to "Back to Inbox", :controller=>"reminder", :action=>"index"%></li>
-    <li><%= link_to "Mark as unread" ,:controller=> "reminder", :action=>"mark_unread", :id2=>@new_reminder.id%></li>
-    <li><%= link_to "Delete", {:controller=>"reminder", :action=>"delete_reminder_by_recipient", :id2=>@new_reminder.id}, :confirm=>"Are you sure?" %></li>
+    <li><%= link_to t("Back_to_inbox"), :controller=>"reminder", :action=>"index"%></li>
+    <li><%= link_to t("Mark_as_unread"),:controller=> "reminder", :action=>"mark_unread", :id2=>@new_reminder.id%></li>
+    <li><%= link_to t("Delete"), {:controller=>"reminder", :action=>"delete_reminder_by_recipient", :id2=>@new_reminder.id}, :confirm=>"Are you sure?" %></li>
   </ul>
 </div>
 
@@ -22,13 +22,13 @@
   <% end %>
 
   <div id="reminder-body">
-    <div id="reminder-from">From: <%= @sender.full_name %></div>
-    <div id="reminder-date">Sent on: <%= @new_reminder.created_at.strftime("%A, %d %B, %Y") %></div>
-    <div id="reminder-subject">Subject: <%= @new_reminder.subject %></div>
-    <div id="reminder-message"><strong>Message:</strong><br /><br /><%= @new_reminder.body %></div>
+    <div id="reminder-from">来自: <%= @sender.full_name %></div>
+    <div id="reminder-date">发送时间: <%= @new_reminder.created_at.strftime("%A, %d %B, %Y") %></div>
+    <div id="reminder-subject">主题: <%= @new_reminder.subject %></div>
+    <div id="reminder-message"><strong>消息:</strong><br /><br /><%= @new_reminder.body %></div>
     <div id="reminder-reply">
 
-      <%= link_to_function "► Reply", :class=>'button' do |page|
+      <%= link_to_function "► 回复", :class=>'button' do |page|
         page.visual_effect :toggle_blind, "reply-form"
       end %>
       

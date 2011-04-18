@@ -3,11 +3,11 @@ class CreateEmployees < ActiveRecord::Migration
   def self.up
     create_table :employees do |t|
       t.references :employee_category, :comment => "关联职员类别"
-      t.string     :employee_number, :comment => "职员号"
+      t.string     :employee_number, :comment => "员工号"
       t.date       :joining_date, :comment => "入职时间"
-      t.string     :first_name, :comment => "姓氏"
+      t.string     :first_name, :comment => "名字"
       t.string     :middle_name, :comment => "中间名"
-      t.string     :last_name, :comment => "名"
+      t.string     :last_name, :comment => "姓氏"
       t.boolean    :gender, :comment => "性别"
       t.string     :job_title, :comment => "职位"
       t.references :employee_position, :comment => "关联职员职务"
@@ -31,15 +31,15 @@ class CreateEmployees < ActiveRecord::Migration
       t.references :nationality, :comment => "国籍"
 
       
-      t.string     :home_address_line1, :comment => "家庭电话1"
-      t.string     :home_address_line2, :comment => "家庭电话2"
+      t.string     :home_address_line1, :comment => "家庭地址1"
+      t.string     :home_address_line2, :comment => "家庭地址2"
       t.string     :home_city, :comment => "家庭所在城市"
       t.string     :home_state, :comment => "家庭所在州"
       t.integer    :home_country_id, :comment => "家庭所在国家"
       t.string     :home_pin_code, :comment => "pin码"
 
-      t.string     :office_address_line1, :comment => "办公电话1"
-      t.string     :office_address_line2, :comment => "办公电话2"
+      t.string     :office_address_line1, :comment => "办公地址1"
+      t.string     :office_address_line2, :comment => "办公地址2"
       t.string     :office_city, :comment => "公司所在城市"
       t.string     :office_state, :comment => "公司所在州"
       t.integer    :office_country_id, :comment => "公司所在国家"
@@ -47,8 +47,8 @@ class CreateEmployees < ActiveRecord::Migration
 
       t.string     :office_phone1, :comment => "办公电话1"
       t.string     :office_phone2, :comment => "办公电话2"
-      t.string     :mobile_phone, :comment => "手机号"
-      t.string     :home_phone, :comment => "家庭号"
+      t.string     :mobile_phone, :comment => "手机号码"
+      t.string     :home_phone, :comment => "家庭电话"
       t.string     :email, :comment => "email"
       t.string     :fax, :comment => "传真"
 

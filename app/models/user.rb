@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
   validates_length_of     :username, :within => 1..20
   validates_length_of     :password, :within => 4..40, :allow_nil => true
   validates_format_of     :username, :with => /^[A-Z0-9_]*$/i,
-    :message => "must contain only letters, numbers, and underscores"
+    :message => "必须只由字母,数字和下划线组成."
   validates_format_of     :email, :with => /^[A-Z0-9._%-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i,
-    :message => "must be a valid email address"
+    :message => "必须是有效的邮箱地址"
   validates_presence_of   :email, :role
   validates_presence_of   :password, :on => :create
   

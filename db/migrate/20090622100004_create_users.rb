@@ -3,8 +3,8 @@ class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
       t.string   :username, :comment => "用户名"
-      t.string   :first_name, :comment => "姓氏"
-      t.string   :last_name, :comment => "名字"
+      t.string   :first_name, :comment => "名字"
+      t.string   :last_name, :comment => "姓氏"
       t.string   :email, :comment => "email"
 
       t.boolean  :admin, :comment => "是否是管理员"

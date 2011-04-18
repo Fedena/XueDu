@@ -1,21 +1,21 @@
 <div class="add_grade">
-<%= link_to_remote 'Add Grades', :url => { :action => 'new', :id => @batch }%>
+<%= link_to_remote t('Add_grade'), :url => { :action => 'new', :id => @batch }%>
 
 </div>
 <%  unless @grading_levels.empty? %>
   <table id="listing" align="center" width="100%" cellpadding="1" cellspacing="1">
     <tr class="tr-head">
-      <td>Name</td>
-      <td>Min score</td>
+      <td>名称</td>
+      <td>最低分</td>
       <td></td>
     </tr>
     <% @grading_levels.each do |grade| %>
       <tr id="grading-level-<%= grade.id %>" class="tr-<%= cycle('odd', 'even') %>">
         <td class="col-2"><%= grade.name %></td>
         <td class="col-2"><%= grade.min_score %></td>
-        <td class="col-1"><small><%= link_to_remote('Edit',
+        <td class="col-1"><small><%= link_to_remote(t('Edit'),
               :url => edit_grading_level_path(grade), :method => 'get' ) %>
-            | <%= link_to_remote('Delete',
+            | <%= link_to_remote(t('Delete'),
               :url => grading_level_path(grade),
               :method => 'delete',
               :confirm => 'Are you sure?',
@@ -25,6 +25,6 @@
   </table>
 <% else %>
 
-  <h4>Set in common</h4>
+  <h4>设置共同</h4>
 
 <% end %>
