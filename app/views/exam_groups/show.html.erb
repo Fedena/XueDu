@@ -1,7 +1,7 @@
 <div id="content-header">
   <img src="/images/examination/show_exam.png" alt="Exam" />
-  <h1>Exams</h1>
-  <h3>Showing Exam group</h3>
+  <h1><%= t 'Exams' %></h1>
+  <h3><%= t 'Show_exam_group' %></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -16,7 +16,7 @@
     <% end  %>
     <% end %>
       <%  if permitted_to? :new,:exams %>
-    <li><%= link_to 'New', new_exam_group_exam_path(@exam_group) %></li>
+    <li><%= link_to t('New'), new_exam_group_exam_path(@exam_group) %></li>
     <% end %>
   </ul>
 </div>
@@ -28,10 +28,10 @@
 
   <div class="box">
        <div class="bread_crumb">
-          <%= link_to 'Courses', courses_path %> &raquo;
+          <%= link_to t('Courses'), courses_path %> &raquo;
         <%= link_to @course.full_name, @course %> &raquo;
-        <%= link_to "Batch #{@batch.name}", [@course, @batch] %> &raquo;
-        <%= link_to 'Exams', batch_exam_groups_path(@batch) %> &raquo;
+        <%= link_to "#{t(Batch)} #{@batch.name}", [@course, @batch] %> &raquo;
+        <%= link_to t('Exams'), batch_exam_groups_path(@batch) %> &raquo;
         <%= @exam_group.name %>
         </div>
 
@@ -40,24 +40,23 @@
         :id => "loader",
         :style =>"display: none;" ) %></span></h4></div>
 
-
     <% unless @exam_group.exam_type == 'Grades' %>
       <table id="listing">
         <tr class="tr-head">
-          <td>Subject</td>
-          <td>Max marks</td>
-          <td>Min marks</td>
-          <td>Manage</td>
+          <td><%= tt('exam.subject_name') %></td>
+          <td><%= tt('exam.maximum_marks') %></td>
+          <td><%= tt('exam.minimum_marks') %></td>
+          <td><%= tt('exam_group.manage') %></td>
         </tr>
         <% @exam_group.exams.each do |exam| %>
           <tr class="tr-<%= cycle('odd', 'even') %>">
             <% @exam = exam %>
-            <td class="col-2"><%= link_to exam.subject.name, [@exam_group, exam] %></td>
+            <td class="col-2"><%= link_to exam.subject.try(:name), [@exam_group, exam] %></td>
             <td class="col-1"><%= in_place_editor_field :exam, :maximum_marks,{},{:cols=>1} %></td>
             <td class="col-1"><%= in_place_editor_field :exam, :minimum_marks,{},{:cols=>1} %></td>
                     <td class="col-1">
-              <small><%= link_to 'Edit', edit_exam_group_exam_path(@exam_group, exam) %></small>
-              <small><%= link_to 'Delete', [@exam_group, exam], :method => 'delete', :confirm => 'Are you sure you want to delete?' %></small>
+              <small><%= link_to t('Edit'), edit_exam_group_exam_path(@exam_group, exam) %></small>
+              <small><%= link_to t('Delete'), [@exam_group, exam], :method => 'delete', :confirm => 'Are you sure you want to delete?' %></small>
             </td>
           </tr>
         <% end %>
@@ -65,16 +64,16 @@
     <% else %>
       <table id="listing" width="100%">
         <tr class="tr-head">
-          <td>Subject</td>
-          <td>Manage</td>
+          <td><%= tt('exams.subject_name') %></td>
+          <td><%= tt('exam_group.manage') %></td>
         </tr>
         <% @exam_group.exams.each do |exam| %>
           <tr class="tr-<%= cycle('odd', 'even') %>">
             <% @exam = exam %>
             <td class="col-3"><%= link_to exam.subject.name, [@exam_group, exam] %></td>
             <td class="col-1">
-              <small><%= link_to 'Edit', edit_exam_group_exam_path(@exam_group, exam) %></small>
-              <small><%= link_to 'Delete', [@exam_group, exam], :method => 'delete', :confirm => 'Are you sure you want to delete?' %></small>
+              <small><%= link_to t('Edit'), edit_exam_group_exam_path(@exam_group, exam) %></small>
+              <small><%= link_to t('Delete'), [@exam_group, exam], :method => 'delete', :confirm => 'Are you sure you want to delete?' %></small>
             </td>
           </tr>
         <% end %>

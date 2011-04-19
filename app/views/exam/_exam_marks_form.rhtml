@@ -10,7 +10,7 @@
     <%= f.label :exam_type %>
     <%= f.hidden_field :exam_type,:value=>@type %>
     <div class="text-input-bg"><%= f.text_field :exam_type, :value=>@type,:disabled=>true %>
-    </div><%= link_to "Change Type", new_batch_exam_group_path(@batch,:ename=>@name),:class=>"type_link" %>
+    </div><%= link_to t("Change_type"), new_batch_exam_group_path(@batch,:ename=>@name),:class=>"type_link" %>
   </div>
   <div class="label-field-pair">
     <%= f.label :maximum_marks %>
@@ -21,16 +21,16 @@
     <div class="text-input-bg"> <%= f.text_field :minimum_marks %></div>
   </div>
 
-<h4>Enter exam related details here:</h4>
+<h4>在这里输入考试相关细节:</h4>
 
   <table width="100%" id="listing">
     <tr class="tr-head">
-      <td>Subject name</td>
-      <td>Max Marks</td>
-      <td>Min Marks</td>
-      <td>Start time</td>
-      <td>End time</td>
-      <td>Do not create</td>
+      <td><%= t 'subject_name' %></td>
+      <td><%= t 'maximum_marks' %></td>
+      <td><%= t 'minimum_marks' %></td>
+      <td><%= t 'start_time' %></td>
+      <td><%= t 'end_time' %></td>
+      <td><%= t 'do_no_create' %></td>
     </tr>
 
     <% f.fields_for :exams do |exam_form| %>
@@ -74,8 +74,7 @@
     <% end %>
   </table>
 
-  <%= submit_tag "", :value => "► Save Changes", :class => "submit_button2" %>
-
+  <%= submit_tag "", :value => "► 保存修改", :class => "submit_button2" %>
 
 <% end %>
 <script>
