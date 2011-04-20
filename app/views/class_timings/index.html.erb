@@ -1,7 +1,7 @@
 <div id="content-header">
   <img src="/images/show_news/show_news_logo.png" />
-  <h1>Timetable</h1>
-  <h3>Set class timings</h3>
+  <h1><%= t 'Timetable' %></h1>
+  <h3><%= t 'Set_timing' %></h3>
   <div id="app-back-button">
     <%= link_to_function image_tag("/images/buttons/back.png", :border => 0), "history.back()"  %>
   </div>
@@ -14,11 +14,11 @@
   <% end %>
     
     <div class="label-field-pair">
-   <label >Select a batch:</label>
+  <label ><%= t 'Select_a_batch' %>:</label>
  <div class="text-input-bg">
   <%= select :batch, :id,
     @batches.map {|b| [b.full_name, b.id] },
-    {:prompt => 'Common'},
+    {:prompt => t('Common')},
     {:onchange => "#{remote_function(
     :url => { :action => 'show' },
     :with => "'batch_id='+value",
@@ -33,17 +33,6 @@
 
 <div class="extender"></div>
  </div>
-
-
-
-
-
-
-
-
-
-
-
 
 <%#*<div id="form-content">%>
 

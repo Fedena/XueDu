@@ -4,14 +4,14 @@ class WeekdayController < ApplicationController
   def index
     @batches = Batch.active
     @weekdays = Weekday.default
-    @day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    @day = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
     @days = ["0", "1", "2", "3", "4", "5", "6"]
   end
 
   def week
     @batch = nil
     @days = ["0", "1", "2", "3", "4", "5", "6"]
-    @day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    @day = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
     if params[:batch_id] == ''
       @weekdays = Weekday.default
     else
@@ -22,8 +22,6 @@ class WeekdayController < ApplicationController
       page.replace_html "weekdays", :partial => "weekdays"
     end
   end
-
-  
 
   def create
     batch = params[:weekday][:batch_id]

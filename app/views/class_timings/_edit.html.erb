@@ -1,7 +1,7 @@
-<label class="head_label">Edit class timing for
+<label class="head_label">编辑班级时间
   <span>
     <% if @batch.nil?%>
-      <%= "common" %>
+      <%= t "Common" %>
     <% else %>
       <%=  @batch.full_name %>
     <% end %>
@@ -13,28 +13,26 @@
     <div id="form-errors"></div>
 
     <div class="label-field-pair">
-      <label for="name"> Name</label>
+      <%= f.label :name %>
       <div class="text-input-bg"><%= f.text_field :name %></div>
     </div>
 
-    
-
     <div class="label-field-pair">
-      <label for="name"> Start time </label>
-    <div class="time-select-field"><%= time_select :class_timing, :start_time, {:minute_step => 5} %></div>
+      <%= f.label :start_time %>
+      <div class="time-select-field"><%= time_select :class_timing, :start_time, {:minute_step => 5} %></div>
     </div>
 
     <div class="label-field-pair">
-      <label for="name"> End time </label>
-    <div class="time-select-field"><%= time_select :class_timing, :end_time, {:minute_step => 5} %></div>
+      <%= f.label :end_time %>
+      <div class="time-select-field"><%= time_select :class_timing, :end_time, {:minute_step => 5} %></div>
     </div>
 
     <div class="label-checkbox-pair">
-      <label><%= f.check_box :is_break, :checked => false %> Is a break</label>
+      <%= f.check_box :is_break, :checked => false %>
+      <%= f.label :is_break %>
     </div>
 
-    <%= submit_tag '► Save', :class => 'submit-button' %>
-
+    <%= submit_tag '', :value => '► 更新', :class => 'submit-button' %>
 
   <% end %>
 </div>

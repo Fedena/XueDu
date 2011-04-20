@@ -11,9 +11,27 @@ zh-CN:
   Calendar: "校历"
   Students: "学生"
   Attendance: "考勤"
+  Attendance_register: "签到簿"
+  Attendance_descript: "学生的签到簿"
+  Attendance_report: "签到报告"
+  Attendance_report_des: "学生的签到报告"
   Settings: "平台设置"
   News: "新闻公告"
   Timetable: "课程表"
+  Create_timetable: "创建/编辑课程表"
+  Create_descrip: "选择一个班级并且为这个班级编辑课程表"
+  Set_timing: "设置班级时间"
+  View_timetables: "查看课程表"
+  View_descrip: "查看一个班级的课程表"
+  Swap_class: "交换班级"
+  Swap_descrip: "在给定时间内生成期间条目"
+  Institutional_timetable: "学院时间表"
+  View_entire: "查看某一天的整个时间表"
+  Create_weekday: "创建平日"
+  Select_class_to_edit: "选择要编辑的班级"
+  Select_a_class_section: "选择一个班级 & 部分"               
+  Select_a_class_view: "选择要查看的班级"
+  Weekdays: "平日"
   More: "更多"
   Calendar: "校历"
   to_Xuedu_dashboard: "使用学度教育平台"
@@ -213,6 +231,19 @@ zh-CN:
   Comments: "评论"
   Leave_a_comment: "发表评论"
 
+  Human_resource: "人力资源"
+  HR_manage: "人力资源管理"
+  HR_set: "人力资源设置"
+  Employee_manage: "员工管理"
+  Manage_all_employee: "管理所有的员工"
+  Employee_attendance: "员工考勤"
+  Manage_all_attendance: "管理所有员工的考勤和休假"
+  Create_payslip: "创建工资单"
+  Create_emp_payslip: "每月为员工创建工资单"
+  Employee_search: "员工查询"
+  Search_employee: "查询员工信息"
+  Employee_payslip: "员工工资单"
+
   New: "新建"
   Add: "添加"
   Edit: "编辑"
@@ -358,6 +389,7 @@ zh-CN:
       student_previous_data: "学生以前数据"
       advance_search: "高级查询"
       grading_level: "等级水平"
+      class_timing: "班级时间"
     attributes:
       student:
         admission_no: "学号" 
@@ -511,6 +543,12 @@ zh-CN:
       additional_exam_group:
         name: "名称"
         exam_type: "考试类型"
+      class_timing:
+        name: "名称"
+        start_time: "开始时间"
+        end_time: "结束时间"
+        opration: "操作"
+        is_break: "是否为休息时间"
 
     errors:
       template: # ~ 2.3.5 backward compatible

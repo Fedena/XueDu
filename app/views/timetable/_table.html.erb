@@ -4,7 +4,7 @@
           <%= link_to_remote "◄", :url=>{:controller=>"timetable", :action=>"timetable",:next=>(@today-1.day)} %>
         </div>
         <div class="month">
-          <%= @today.strftime(" %d %B %Y") %>
+          <%= @today.strftime("%Y-%m-%d") %>
         </div>
         <div class="next">
         <%= link_to_remote "►", :url=>{:controller=>"timetable", :action=>"timetable",:next=>(@today+1.day)} %>
@@ -21,7 +21,7 @@
       <tr>
         <td class="head">
           <div class="top">
-            Time
+            时间 
           </div>
           <div class="bottom">
             <div class="course">
@@ -54,7 +54,7 @@
       </tr>
     </table>
       <% else %>
-  <h4>No Timetable Entry for batch : <%= b.full_name %> </h4>
+  <h4>此期次没有时间表条目: <%= b.full_name %> </h4>
     <% end %>
   <% end %>
   
