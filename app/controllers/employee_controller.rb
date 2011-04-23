@@ -4,6 +4,7 @@ class EmployeeController < ApplicationController
   before_filter :protect_other_employee_data, :only => [:individual_payslip_pdf]
   prawnto :prawn => {:left_margin => 25, :right_margin => 25}
   
+  #添加类别
   def add_category
     @categories = EmployeeCategory.find(:all)
     @category = EmployeeCategory.new(params[:category])

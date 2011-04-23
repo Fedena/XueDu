@@ -1,7 +1,7 @@
 <div id="content-header">
    <img src="/images/HR/show_hr.png" alt="" />
-<h1>Employee Admission</h1>
-<h3>Step-4</h3>
+   <h1><%= t 'Employee_admission' %></h1>
+   <h3><%= t 'Step_4' %></h3>
 <div id="app-back-button">
    <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
 </div>
@@ -18,7 +18,7 @@
 <%= error_messages_for 'employee_bank_details' %>
 
     <div id="form-contents">
-      <span class="span-sub-heading">Additional Details</span>
+      <span class="span-sub-heading"><%= t 'Additional_info' %></span>
       <hr class="sub-heading"></hr>
         <% @additional_fields.each do |additional| %>
         <div class="label-field-pair">
@@ -31,7 +31,7 @@
     </div>
 
   <div class="save-proceed-button">
-    <%= submit_tag "► Save & Proceed" %>
+    <%= submit_tag "", :value =>"► 保存 & 继续前进" %>
   </div>
 <% end %>
 

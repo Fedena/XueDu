@@ -1,7 +1,7 @@
 <div id="content-header">
 <img src="/images/HR/show_hr.png" alt="" />
-  <h1>Employee Settings</h1>
-  <h3>Edit position</h3>
+  <h1><%= t 'Employee_set' %></h1>
+  <h3><%= t 'Edit_position' %></h3>
   <div id="app-back-button">
       <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
@@ -18,32 +18,31 @@
     <%= error_messages_for 'position' %>
  <div id="form-content">
     <div class="label-field-pair">
-      <label for="position_name">Name</label>
+      <label for="position_name">名称</label>
       <div class="text-input-bg"> <%= c.text_field :name %> </div>
     </div>
 
    <div class="label-field-pair">
-      <label for="category_name">Employee category</label>
+      <label for="category_name">员工类型</label>
       <div class="text-input-bg"><%= select :position, :employee_category_id, @categories.map {|s| [s.name, s.id]}, :prompt => "Select" %></div>
     </div>
 
     <div class="label-checkbox-pair">
-      <label class="status" for="status">Status</label>
+      <label class="status" for="status">状态</label>
       <div id="radio-buttons">
       <%= c.radio_button  "status", "true", :checked => "checked" %>
-      <label class="label_for_status" for="add_grade_status_true">Active</label>
+      <label class="label_for_status" for="add_grade_status_true">有效</label>
 
       <%= c.radio_button  "status", "false" %>
-      <label class="label_for_status" for="add_grade_status_false">Inactive</label>
+      <label class="label_for_status" for="add_grade_status_false">无效</label>
       </div>
     </div>
 
     <div id="submit-button">
-      <%=  submit_tag("► Update") %>
+      <%=  submit_tag("", :value => "► 更新") %>
     </div>
     </div>
 
   <%- end -%>
-
 
 </div>
